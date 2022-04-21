@@ -2,6 +2,21 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
+    title: 'Event Management',
+    icon: 'calendar-outline',
+    link: '/pages/event',
+    children: [
+      {
+        title: 'Create New Event',
+        link: '/pages/event/new-event',
+      },
+      {
+        title: 'List of All Events',
+        link: '/pages/event/show-events',
+      },
+    ]
+  },
+  {
     title: 'E-commerce',
     icon: 'shopping-cart-outline',
     link: '/pages/dashboard',

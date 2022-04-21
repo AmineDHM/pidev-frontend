@@ -1,5 +1,5 @@
 {
-  "name": "woppy-front",
+  "name": "woppy-frontend-admin",
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,14 +7,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:prod": "npm run build -- --configuration production --aot",
-    "test": "ng test",
-    "test:coverage": "rimraf coverage && npm run test -- --code-coverage",
-    "lint": "ng lint",
-    "lint:fix": "ng lint ngx-admin-demo --fix",
-    "lint:styles": "stylelint ./src/**/*.scss",
-    "lint:ci": "npm run lint && npm run lint:styles",
-    "pree2e": "webdriver-manager update --standalone false --gecko false",
-    "e2e": "ng e2e"
+    "test": "ng test"
   },
   "dependencies": {
     "@akveo/ng2-completer": "^9.0.1",

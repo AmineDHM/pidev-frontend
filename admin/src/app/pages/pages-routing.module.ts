@@ -1,3 +1,4 @@
+import { EventManagementComponent } from './event-management/event-management.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
@@ -10,6 +11,11 @@ const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [
+    {
+      path: 'event',
+      loadChildren: () => import('./event-management/event-management.module')
+        .then(m => m.EventManagementModule),
+    },
     {
       path: 'dashboard',
       component: ECommerceComponent,

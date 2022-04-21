@@ -1,0 +1,118 @@
+<nb-card>
+  <nb-card-header>Create New Event</nb-card-header>
+  <nb-card-body [nbSpinner]="loading">
+    <form [formGroup]="addEventForm" (ngSubmit)="onSubmit()">
+      <div class="form-group row">
+        <label for="name" class="label col-sm-3 col-form-label"
+          >Event Name</label
+        >
+        <div class="col-sm-9">
+          <input
+            formControlName="name"
+            type="text"
+            nbInput
+            fullWidth
+            id="name"
+            placeholder="Event Name"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="start-date" class="label col-sm-3 col-form-label"
+          >Starting Date</label
+        >
+        <div class="col-sm-9">
+          <input
+            formControlName="startDate"
+            [nbDatepicker]="startDate"
+            nbInput
+            fullWidth
+            id="start-date"
+            placeholder="Starting Date"
+          />
+          <nb-date-timepicker #startDate></nb-date-timepicker>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="end-date" class="label col-sm-3 col-form-label"
+          >Ending Date</label
+        >
+        <div class="col-sm-9">
+          <input
+            formControlName="endDate"
+            [nbDatepicker]="endDate"
+            nbInput
+            fullWidth
+            id="end-date"
+            placeholder="Ending Date"
+          />
+          <nb-date-timepicker #endDate></nb-date-timepicker>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="venue" class="label col-sm-3 col-form-label">Venue</label>
+        <div class="col-sm-9">
+          <input
+            formControlName="venue"
+            type="text"
+            nbInput
+            fullWidth
+            id="venue"
+            placeholder="Venue"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="city" class="label col-sm-3 col-form-label">City</label>
+        <div class="col-sm-9">
+          <input
+            formControlName="city"
+            type="text"
+            nbInput
+            fullWidth
+            id="city"
+            placeholder="City"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="fees" class="label col-sm-3 col-form-label">Fees</label>
+        <div class="col-sm-9">
+          <input
+            formControlName="fees"
+            type="number"
+            nbInput
+            fullWidth
+            id="fees"
+            placeholder="Fees"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="banner" class="label col-sm-3 col-form-label">Banner</label>
+        <div class="col-sm-9">
+          <input
+            (change)="onBannerChange($event)"
+            type="file"
+            nbInput
+            fullWidth
+            id="banner"
+            placeholder="Banner"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="offset-sm-3 col-sm-9">
+          <button type="submit" nbButton status="primary">Create</button>
+        </div>
+      </div>
+    </form>
+  </nb-card-body>
+</nb-card>
