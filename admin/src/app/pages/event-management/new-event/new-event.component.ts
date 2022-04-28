@@ -1,3 +1,4 @@
+import { CoordinatesType } from './../map/map.component';
 import { EventService } from "./../../../services/event-services/event.service";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, Validators } from "@angular/forms";
@@ -51,7 +52,12 @@ export class NewEventComponent implements OnInit {
     //event.target.value = null;
   }
 
+  getCoordinates(coordinates: CoordinatesType) {
+    console.log(coordinates)
+  }
+
   onSubmit(): void {
+    console.log(this.addEventForm)
     this.loading = true;
     this.eventService.addEvent(this.addEventForm.value).subscribe(
       (res) => {

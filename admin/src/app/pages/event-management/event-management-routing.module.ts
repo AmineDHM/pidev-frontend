@@ -3,6 +3,7 @@ import { EventManagementComponent } from './event-management.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ShowEventsComponent } from './show-events/show-events.component';
+import { InviteUsersComponent } from './invite-users/invite-users.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: 'show-events',
         component: ShowEventsComponent
+      },
+      {
+        path: 'invite-users',
+        component: InviteUsersComponent
       }
     ]
   }

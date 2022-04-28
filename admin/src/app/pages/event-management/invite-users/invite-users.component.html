@@ -1,0 +1,48 @@
+<nb-card>
+  <nb-card-header>Choose an event</nb-card-header>
+  <nb-card-body>
+    <div class="row">
+      <div class="col-6 col-sm-4" *ngFor="let item of events">
+        <div class="img-container" (click)="onClick(item.id)">
+          <img
+            class="img"
+            src="https://img.static-kl.com/images/media/E95E1F32-A7A4-4FC0-AC0A41A2BC528AE3?aspect_ratio=1:1&min_width=912"
+            alt="alt"
+          />
+          <div class="top-right">
+            <div class="date">
+              <span class="date-day">{{ item.startDate | date: "dd" }}</span>
+              <span class="date-month">
+                {{ item.startDate | date: "MMM" }}
+              </span>
+            </div>
+          </div>
+          <div class="bottom-left">
+            <div class="event-info">
+              <div class="event-name">{{ item.name }}</div>
+              <div class="event-place">
+                <div class="pin-icon">
+                  <nb-icon icon="pin" class="text-hint"></nb-icon>
+                </div>
+                <span class="place-name text-hint"
+                  >{{ item.venue }}, {{ item.city }}</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
+
+
+<nb-card class="list-card" size="small">
+  <nb-card-header>Users</nb-card-header>
+  <nb-list>
+    <nb-list-item *ngFor="let user of users">
+      <nb-user [name]="user.firstname">
+      </nb-user>
+    </nb-list-item>
+  </nb-list>
+</nb-card>

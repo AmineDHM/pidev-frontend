@@ -3,14 +3,12 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { API_BASE_URL } from "../constants";
 import { Injectable } from "@angular/core";
 import { EventType } from "./event-type";
-
-const auth =
-  "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY1MDUxODM4NSwiZXhwIjoxNjUwNTIxOTg1fQ.dkViK1VD3g86Tz4PTaw4fFn439d5v8YHXUEmgYhonJTImILoFInNjqQAVifU-yrr4buqruuhMvC68i8VI3qWNA";
+import { JWT_TOKEN } from "../jwt-token";
 
 const httpOptions = {
   headers: new HttpHeaders({
     "Content-Type": "application/json",
-    Authorization: auth,
+    Authorization: JWT_TOKEN,
   }),
 };
 
@@ -61,7 +59,7 @@ export class EventService {
       formData,
       {
         headers: new HttpHeaders({
-          Authorization: auth,
+          Authorization: JWT_TOKEN,
         }),
       }
     );
@@ -70,6 +68,13 @@ export class EventService {
   uploadEventImages(event: EventType): Observable<EventType> {
     return this.http.post<EventType>(
       `${API_BASE_URL}/events/upload-image?eventId=${event.id}`,
+      httpOptions
+    );
+  }
+
+  inviteUsers(event: EventType, users: number[]): Observable<any> {
+    return this.http.post(
+      `${API_BASE_URL}/events/invite?usersId=${users.toString()}&eventId=${event.id}`,
       httpOptions
     );
   }

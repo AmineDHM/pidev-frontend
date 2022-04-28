@@ -2,14 +2,19 @@ import { ModalOverlaysModule } from "./../modal-overlays/modal-overlays.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {
   NbActionsModule,
+  NbAlertModule,
   NbButtonModule,
   NbDatepickerModule,
   NbDialogModule,
+  NbFormFieldModule,
   NbIconModule,
+  NbListModule,
   NbSelectModule,
   NbSpinnerModule,
+  NbStepperModule,
   NbTimepickerModule,
   NbTreeGridModule,
+  NbUserModule,
 } from "@nebular/theme";
 import { ThemeModule } from "./../../@theme/theme.module";
 import {
@@ -27,6 +32,10 @@ import { Ng2SmartTableModule } from "ng2-smart-table";
 import { NewEventComponent } from './new-event/new-event.component';
 import { ShowEventsComponent } from './show-events/show-events.component';
 import { YesNoComponent } from './yes-no/yes-no.component';
+import { MapComponent } from './map/map.component';
+import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
+import { environment } from '../../../environments/environment';
+import { InviteUsersComponent } from './invite-users/invite-users.component';
 
 @NgModule({
   declarations: [
@@ -34,11 +43,17 @@ import { YesNoComponent } from './yes-no/yes-no.component';
     ShowEventsComponent,
     EventManagementComponent,
     YesNoComponent,
+    MapComponent,
+    InviteUsersComponent
   ],
   imports: [
     FormsModule,
+    NbFormFieldModule,
+    NbAlertModule,
     ReactiveFormsModule,
     CommonModule,
+    NbUserModule,
+    NbStepperModule,
     EventManagementRoutingModule,
     ThemeModule,
     NbSpinnerModule,
@@ -57,7 +72,12 @@ import { YesNoComponent } from './yes-no/yes-no.component';
     NbInputModule,
     Ng2SmartTableModule,
     ModalOverlaysModule,
-    NbDialogModule.forChild()
+    NbListModule,
+    NbDialogModule.forChild(),
+    NgxMapboxGLModule.withConfig({
+      accessToken: environment.mapbox.accessToken,
+      geocoderAccessToken: environment.mapbox.accessToken,
+    }),
   ],
 })
 export class EventManagementModule {}
