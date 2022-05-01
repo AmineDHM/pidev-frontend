@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": ["sockjs-client","stompjs"],
+            "allowedCommonJsDependencies": ["sockjs-client", "stompjs"],
             "outputPath": "dist/client",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -25,10 +25,27 @@
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ngx-lightbox/lightbox.css",
+              "src/assets/css/bootstrap-datetimepicker.css",
+              "src/assets/css/themify-icons.css",
+              "src/assets/css/video-player.css",
+              "src/assets/css/aos.min.css",
+              "src/assets/css/feather.css",
+              "src/assets/css/emoji.css",
+              "src/assets/css/style.css",
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.js",
+              "src/assets/js/aos.min.js",
+              "src/assets/js/apexcharts.min.js",
+              "src/assets/js/chart.js",
+              "src/assets/js/aos.min.js",
+              "src/assets/js/plugin.js",
+              "src/assets/js/video-player.js",
+              "src/assets/js/scripts.js"
+            ]
           },
           "configurations": {
             "production": {
