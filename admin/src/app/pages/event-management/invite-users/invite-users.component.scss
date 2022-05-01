@@ -3,6 +3,18 @@
   text-align: center;
   color: white;
   cursor: pointer;
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  transition: width 0.5s;
+  -webkit-transition: width 0.5s;
+  width: 95%;
+}
+
+.img-container:hover {
+  filter: none;
+  -webkit-filter: grayscale(0);
+  width: 100%;
+
 }
 
 .img-container::after {
@@ -19,7 +31,7 @@
   height: 100%;
   object-fit: cover;
   border-radius: 5%;
-  filter: brightness(60%);
+  filter: brightness(70%);
 }
 
 /* Bottom left text */
@@ -102,9 +114,10 @@
 
 .pin-icon {
   margin-right: 5px;
+  color: #b4b4b4;
 }
 
 .place-name {
   font-weight: lighter;
-  color: #a7a7a7;
+  color: #b4b4b4;
 }

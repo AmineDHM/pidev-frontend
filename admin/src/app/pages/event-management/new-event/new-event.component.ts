@@ -1,4 +1,4 @@
-import { CoordinatesType } from './../map/map.component';
+import { CoordinatesType } from "./../map/map.component";
 import { EventService } from "./../../../services/event-services/event.service";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, Validators } from "@angular/forms";
@@ -24,6 +24,7 @@ export class NewEventComponent implements OnInit {
 
   loading = false;
   banner = null;
+  coordinates: CoordinatesType;
 
   addEventForm = this.formBuilder.group({
     name: new FormControl(null, Validators.required),
@@ -49,17 +50,16 @@ export class NewEventComponent implements OnInit {
 
   onBannerChange(event) {
     this.banner = event.target.files[0];
-    //event.target.value = null;
   }
 
   getCoordinates(coordinates: CoordinatesType) {
-    console.log(coordinates)
+    this.coordinates = coordinates;
   }
 
   onSubmit(): void {
-    console.log(this.addEventForm)
+    console.log(this.addEventForm);
     this.loading = true;
-    this.eventService.addEvent(this.addEventForm.value).subscribe(
+    this.eventService.addEvent({ ...this.addEventForm.value, ...this.coordinates }).subscribe(
       (res) => {
         this.eventService.uploadEventBanner(this.banner, res).subscribe(
           () => console.log("file uploaded successfully"),

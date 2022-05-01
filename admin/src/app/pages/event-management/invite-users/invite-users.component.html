@@ -6,7 +6,9 @@
         <div class="img-container" (click)="onClick(item.id)">
           <img
             class="img"
-            src="https://img.static-kl.com/images/media/E95E1F32-A7A4-4FC0-AC0A41A2BC528AE3?aspect_ratio=1:1&min_width=912"
+            src="https://firebasestorage.googleapis.com/v0/b/pidev-405b8.appspot.com/o/{{
+              item.banner
+            }}?alt=media"
             alt="alt"
           />
           <div class="top-right">
@@ -22,9 +24,9 @@
               <div class="event-name">{{ item.name }}</div>
               <div class="event-place">
                 <div class="pin-icon">
-                  <nb-icon icon="pin" class="text-hint"></nb-icon>
+                  <nb-icon icon="pin"></nb-icon>
                 </div>
-                <span class="place-name text-hint"
+                <span class="place-name"
                   >{{ item.venue }}, {{ item.city }}</span
                 >
               </div>
@@ -36,13 +38,11 @@
   </nb-card-body>
 </nb-card>
 
-
-<nb-card class="list-card" size="small">
-  <nb-card-header>Users</nb-card-header>
+<nb-card size="medium">
+  <nb-card-header> Choose users to invite </nb-card-header>
   <nb-list>
     <nb-list-item *ngFor="let user of users">
-      <nb-user [name]="user.firstname">
-      </nb-user>
+      <nb-user name="{{ user.firstname }} {{ user.lastname }}" title="{{ user.departement }}" (click)="addUser(user.id)"></nb-user>
     </nb-list-item>
   </nb-list>
 </nb-card>

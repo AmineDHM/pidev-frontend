@@ -19,7 +19,11 @@ export class InviteUsersComponent implements OnInit {
   ) {}
 
   onClick(id: number) {
-    console.log(id);
+    console.log("event " + id);
+  }
+
+  addUser(id: number) {
+    console.log("user " + id);
   }
 
   ngOnInit(): void {

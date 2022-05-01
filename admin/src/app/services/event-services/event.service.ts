@@ -23,6 +23,7 @@ export class EventService {
   }
 
   addEvent(event: EventType): Observable<EventType> {
+    console.log(event);
     return this.http.post<EventType>(
       `${API_BASE_URL}/events`,
       event,

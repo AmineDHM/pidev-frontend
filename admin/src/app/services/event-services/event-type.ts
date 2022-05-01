@@ -6,4 +6,6 @@ export interface EventType {
   venue: string;
   fees: number;
   banner: File | string;
+  lon: number,
+  lat: number
 }
