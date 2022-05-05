@@ -3,7 +3,11 @@
   <nb-card-body>
     <div class="row">
       <div class="col-6 col-sm-4" *ngFor="let item of events">
-        <div class="img-container" (click)="onClick(item.id)">
+        <div
+          class="img-container"
+          (click)="onClick(item.id)"
+          [ngClass]="item.id == selectedEvent ? 'selected-event' : ''"
+        >
           <img
             class="img"
             src="https://firebasestorage.googleapis.com/v0/b/pidev-405b8.appspot.com/o/{{
@@ -38,11 +42,27 @@
   </nb-card-body>
 </nb-card>
 
-<nb-card size="medium">
+<nb-card size="small">
   <nb-card-header> Choose users to invite </nb-card-header>
   <nb-list>
-    <nb-list-item *ngFor="let user of users">
-      <nb-user name="{{ user.firstname }} {{ user.lastname }}" title="{{ user.departement }}" (click)="addUser(user.id)"></nb-user>
+    <nb-list-item
+      *ngFor="let user of users"
+      [ngClass]="selectedUsers.includes(user.id) ? 'selected-user' : ''"
+    >
+      <nb-user
+        name="{{ user.firstname }} {{ user.lastname }}"
+        title="{{ user.departement }}"
+        (click)="addUser(user.id)"
+      ></nb-user>
     </nb-list-item>
   </nb-list>
 </nb-card>
+<div class="row">
+  <div class="col-4">
+    <button nbButton [status]="'primary'" class="m-3" hero (click)="invite()">
+      Send Invitations
+    </button>
+  </div>
+  <div class="col-4"></div>
+  <div class="col-4"></div>
+</div>

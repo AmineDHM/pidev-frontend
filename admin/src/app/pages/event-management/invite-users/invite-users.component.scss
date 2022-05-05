@@ -14,7 +14,12 @@
   filter: none;
   -webkit-filter: grayscale(0);
   width: 100%;
+}
 
+.selected-event {
+  filter: none;
+  -webkit-filter: grayscale(0);
+  width: 100%;
 }
 
 .img-container::after {
@@ -120,4 +125,8 @@
 .place-name {
   font-weight: lighter;
   color: #b4b4b4;
+}
+
+.selected-user {
+  background-color: rgba(0, 149, 255, 0.08);
 }

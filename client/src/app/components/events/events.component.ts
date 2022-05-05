@@ -5,17 +5,21 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
-  styleUrls: ['./events.component.css']
+  styleUrls: ['./events.component.css'],
 })
 export class EventsComponent implements OnInit {
   events: EventType[] = [];
-  constructor(private eventService: EventService) { }
+  isLoading = true;
+  constructor(private eventService: EventService) {}
 
   ngOnInit(): void {
     this.eventService.getAllEvents().subscribe({
-      next: res => this.events = res,
-      error: err => console.log(err)
-    })
+      next: (res) => (this.events = res),
+      error: (err) => {
+        this.isLoading = false;
+        console.log(err);
+      },
+      complete: () => (this.isLoading = false),
+    });
   }
-
 }

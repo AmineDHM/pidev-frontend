@@ -5,6 +5,7 @@ import { ChangePasswordComponent } from './components/auth/change-password/chang
 import { ForgetPasswordComponent } from './components/auth/forget-password/forget-password.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
+import { EventItemComponent } from './components/event-item/event-item.component';
 import { EventsComponent } from './components/events/events.component';
 import { MainComponent } from './components/main/main.component';
 import { NewsFeedComponent } from './components/news-feed/news-feed.component';
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path: 'events',
         component: EventsComponent,
+      },
+      {
+        path: 'events/:id',
+        component: EventItemComponent,
       },
     ],
   },
@@ -49,7 +54,6 @@ const routes: Routes = [
   },
   { path: '**', pathMatch: 'full', component: PageNotFoundComponent },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

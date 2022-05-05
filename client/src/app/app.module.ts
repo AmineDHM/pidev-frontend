@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { NavigationTopComponent } from './layouts/navigation-top/navigation-top.component';
 import { NavigationLeftComponent } from './layouts/navigation-left/navigation-left.component';
-import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 import { LoginComponent } from './components/auth/login/login.component';
@@ -19,6 +18,13 @@ import { ForgetPasswordComponent } from './components/auth/forget-password/forge
 import { ChangePasswordComponent } from './components/auth/change-password/change-password.component';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
+import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
+import { environment } from 'src/environments/environment';
+import { MapComponent } from './components/map/map.component';
+import { EventItemComponent } from './components/event-item/event-item.component';
+import { LightboxModule } from 'ngx-lightbox';
+import { StarRatingModule } from 'angular-star-rating';
+import { ProfanityFilterPipe } from './pipes/profanity-filter-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -34,6 +40,9 @@ import { AppRoutingModule } from './app-routing.module';
     AuthComponent,
     PageNotFoundComponent,
     EventsComponent,
+    MapComponent,
+    EventItemComponent,
+    ProfanityFilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +56,11 @@ import { AppRoutingModule } from './app-routing.module';
       progressBar: true,
     }),
     BrowserAnimationsModule,
+    NgxMapboxGLModule.withConfig({
+      accessToken: environment.mapbox.accessToken,
+    }),
+    LightboxModule,
+    StarRatingModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],

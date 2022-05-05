@@ -1,8 +1,7 @@
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { API_BASE_URL } from '../constants';
-import { JWT_TOKEN } from '../jwt-token';
+import { API_BASE_URL, JWT_TOKEN } from '../constants';
 import { UserType } from './user-type';
 
 

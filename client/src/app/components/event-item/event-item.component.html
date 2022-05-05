@@ -1,0 +1,446 @@
+<!-- <div class="row">
+  <div class="col-xl-8 col-xxl-9 col-lg-8">
+    <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3">
+      <div class="card-body p-3 border-0">
+        <img class="w-100 rounded-3" [src]="'https://firebasestorage.googleapis.com/v0/b/pidev-405b8.appspot.com/o/' + event?.banner + '?alt=media' " alt="banner">
+      
+      
+      </div>
+    </div>
+    <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3">
+      <div class="card-body p-3 border-0">
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae
+          eos sit, necessitatibus ipsam distinctio laudantium. Dignissimos
+          quibusdam similique, officia culpa architecto eligendi, voluptatibus
+          soluta, tempora ducimus nihil illo consequatur incidunt.
+        </p>
+      </div>
+    </div>
+    <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3">
+      <div class="card-body p-3 border-0">
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae
+          eos sit, necessitatibus ipsam distinctio laudantium. Dignissimos
+          quibusdam similique, officia culpa architecto eligendi, voluptatibus
+          soluta, tempora ducimus nihil illo consequatur incidunt.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-4 col-xxl-3 col-lg-4 pe-0">
+    <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3">
+      <div class="card-body p-3 border-0">
+        <div class="row align-items-center">
+          <div class="col-4">
+            <div
+              class="d-flex align-items-center font-xssss fw-700 ls-1 text-grey-700 text-dark"
+            >
+              <i class="font-md text-primary feather-clock me-2"></i>
+              <span class="">When</span>
+            </div>
+          </div>
+          <div class="col-8 d-flex align-items-center font-xssss fw-700">
+            <span class="font-xsss">{{
+              event?.startDate | date: "short"
+            }}</span>
+            <i class="font-md text-danger feather-arrow-right me-2"></i>
+            <span class="font-xsss">{{ event?.endDate | date: "short" }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3">
+      <div class="card-body p-3 border-0">
+        <div class="row align-items-center">
+          <div class="col-4">
+            <div
+              class="d-flex align-items-center font-xssss fw-700 ls-1 text-grey-700 text-dark"
+            >
+              <i class="font-md text-danger feather-map-pin me-2"></i>
+              <span class="">Where</span>
+            </div>
+          </div>
+          <div class="col-8 d-flex align-items-center font-xssss fw-700">
+            <span class="font-xsss">{{ event?.venue }}, {{ event?.city }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3">
+      <div class="card-body p-3 border-0">
+        <div class="row align-items-center">
+          <div class="col-4">
+            <div
+              class="d-flex align-items-center font-xssss fw-700 ls-1 text-grey-700 text-dark"
+            >
+              <i class="font-md text-success feather-dollar-sign me-2"></i>
+              <span class="">Fees</span>
+            </div>
+          </div>
+          <div class="col-8 d-flex align-items-center font-xssss fw-700">
+            <span class="font-xsss">{{ event?.fees }} TND</span>
+            <span class="fw-600 text-grey-500 ms-1">(All tax included)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3">
+      <div class="card-body p-3 border-0">
+        <div class="row align-items-center">
+          <div class="col-4">
+            <div
+              class="d-flex align-items-center font-xssss fw-700 ls-1 text-grey-700 text-dark"
+            >
+              <i class="font-md text-warning feather-sun me-2"></i>
+              <span class="">Weather</span>
+            </div>
+          </div>
+          <div class="col-8 d-flex align-items-center font-xssss fw-700">
+            <span class="">
+              <img [src]="weather?.weatherState.weatherIconUrl" alt="weather" />
+            </span>
+            <div class="mx-2">
+              <span class="font-xss text-grey-600">{{
+                weather?.temperature.max
+              }}</span>
+              <span class="font-xssss fw-600 text-grey-500"
+                >/{{ weather?.temperature.min }}</span
+              >
+            </div>
+            <span class="font-xss">{{ weather?.weatherState.name }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ -->
+
+<div class="p-3" *ngIf="isLoading">
+  <div class="box shimmer">
+    <div class="lines">
+      <div class="line s_shimmer"></div>
+      <div class="line s_shimmer"></div>
+      <div class="line s_shimmer"></div>
+      <div class="line s_shimmer"></div>
+    </div>
+  </div>
+  <div class="box shimmer mb-3">
+    <div class="lines">
+      <div class="line s_shimmer"></div>
+      <div class="line s_shimmer"></div>
+      <div class="line s_shimmer"></div>
+      <div class="line s_shimmer"></div>
+    </div>
+  </div>
+  <div class="box shimmer">
+    <div class="lines">
+      <div class="line s_shimmer"></div>
+      <div class="line s_shimmer"></div>
+      <div class="line s_shimmer"></div>
+      <div class="line s_shimmer"></div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!isLoading">
+  <!-- banner -->
+  <div class="row">
+    <div class="col-xl-12 col-xxl-12 col-lg-12">
+      <div class="d-flex justify-content-center">
+        <img
+          [src]="
+            'https://firebasestorage.googleapis.com/v0/b/pidev-405b8.appspot.com/o/' +
+            event?.banner +
+            '?alt=media'
+          "
+          alt="event-banner"
+          class="rounded-3 w-75"
+        />
+      </div>
+    </div>
+  </div>
+  <!-- end banner -->
+
+  <!-- event name, description and description -->
+  <div class="row">
+    <div class="col-xl-8 col-xxl-9 col-lg-8">
+      <div class="card d-block mt-3 border-0 shadow-xss bg-white p-4">
+        <div
+          class="d-flex flex-direction-row align-items-center justify-content-between"
+        >
+          <h2 class="fw-700 font-lg mt-3 mb-2 lh-3">
+            {{ event?.name }}
+          </h2>
+          <a
+            (click)="toggleFav(event?.id)"
+            class="btn-round-md d-inline-block rounded-3 cursor-pointer"
+            [ngClass]="isFav ? 'bg-danger' : 'bg-grey'"
+            ><i
+              class="feather-heart font-lg"
+              [ngClass]="isFav ? 'text-white' : 'text-black'"
+            ></i>
+          </a>
+        </div>
+
+        <p class="font-xsss fw-500 text-grey-500 lh-30 pe-5 mt-3 me-5">
+          {{ event?.description }}
+        </p>
+      </div>
+
+      <div
+        class="card d-block border-0 rounded-3 overflow-hidden p-4 shadow-xss mt-3"
+        *ngIf="isEnded"
+      >
+        <h2 class="fw-700 font-sm mb-3 mt-1 ps-1 mb-3">Gallery</h2>
+        <div class="row ps-3 pe-3">
+          <div
+            *ngFor="let image of _albums; let i = index"
+            class="col-sm-4 col-xss-4 pe-1 ps-1 mb-2 fill"
+          >
+            <img
+              class="img-fluid w-100 rounded-3 fill-img cursor-pointer"
+              [src]="image.thumb"
+              (click)="open(i)"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card w-100 border-0 mt-3 mb-4 p-lg-4 p-3 shadow-xss position-relative rounded-3 bg-white"
+        *ngIf="isEnded"
+      >
+        <div class="d-flex justify-content-between mb-4">
+          <h2 class="fw-700 font-sm mt-1 ps-1">Feedbacks</h2>
+          <div class="rounded-3">
+            <div class="row">
+              <div class="col-12 text-center">
+                <div
+                  class="d-flex flex-direction-row align-items-center justify-content-end"
+                >
+                  <h2 class="font-md lh-1 m-0 text-grey-900 fw-700">
+                    {{ avgRating || 0 }}
+                  </h2>
+                  <h2 class="font-x lh-1 m-0 text-grey-500 fw-500">/5</h2>
+
+                  <img
+                    src="assets/images/star.png"
+                    alt="star"
+                    class="w20 ms-2"
+                  />
+                </div>
+              </div>
+              <div class="col-12 text-center">
+                <h4 class="font-xssss text-grey-600 fw-600 mt-2 float-right">
+                  Based on {{ feedbacks.length }} rating
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" *ngFor="let item of feedbacks">
+          <div class="col-1 text-left">
+            <figure class="avatar float-left mb-0 mt-1">
+              <img
+                src="assets/images/user-7.png"
+                alt="image"
+                class="float-right shadow-none w40 me-2"
+              />
+            </figure>
+          </div>
+          <div class="col-11 ps-4">
+            <div class="content">
+              <div
+                class="d-flex flex-direction-row justify-content-between align-items-center"
+              >
+                <h6 class="author-name font-xssss fw-600 mb-0 text-grey-800">
+                  {{ item?.firstName + " " + item?.lastName }}
+                </h6>
+                <div class="d-flex justify-content-start">
+                  <star-rating
+                    [showHalfStars]="true"
+                    [hoverEnabled]="true"
+                    [starType]="'svg'"
+                    [readOnly]="true"
+                    [rating]="item?.rate"
+                    staticColor="ok"
+                  ></star-rating>
+                </div>
+              </div>
+              <p
+                class="comment-text lh-24 fw-500 font-xssss text-grey-500 mt-1"
+              >
+                {{ item?.content | profanityFilter }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end event name and description -->
+
+    <!-- event details -->
+    <div class="col-xl-4 col-xxl-3 col-lg-4 ps-0">
+      <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3 p-1">
+        <div class="card-body p-3 border-0">
+          <div class="row align-items-center">
+            <div class="col-4">
+              <div
+                class="d-flex align-items-center font-xssss fw-700 ls-1 text-grey-700 text-dark"
+              >
+                <i class="font-md text-primary feather-clock me-2"></i>
+                <span class="">When</span>
+              </div>
+            </div>
+            <div class="col-8 d-flex align-items-center font-xssss fw-700">
+              <span class="font-xsss">{{
+                event?.startDate | date: "short"
+              }}</span>
+              <i class="font-md text-danger feather-arrow-right me-2"></i>
+              <span class="font-xsss">{{
+                event?.endDate | date: "short"
+              }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3 p-1">
+        <div class="card-body p-3 border-0">
+          <div class="row align-items-center">
+            <div class="col-4">
+              <div
+                class="d-flex align-items-center font-xssss fw-700 ls-1 text-grey-700 text-dark"
+              >
+                <i class="font-md text-danger feather-map-pin me-2"></i>
+                <span class="">Where</span>
+              </div>
+            </div>
+            <div class="col-8 d-flex align-items-center font-xssss fw-700">
+              <span class="font-xsss"
+                >{{ event?.venue }}, {{ event?.city }}</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3 p-1">
+        <div class="card-body p-3 border-0">
+          <div class="row align-items-center">
+            <div class="col-4">
+              <div
+                class="d-flex align-items-center font-xssss fw-700 ls-1 text-grey-700 text-dark"
+              >
+                <i class="font-md text-success feather-dollar-sign me-2"></i>
+                <span class="">Fees</span>
+              </div>
+            </div>
+            <div class="col-8 d-flex align-items-center font-xssss fw-700">
+              <span class="font-xsss">{{ event?.fees }} TND</span>
+              <span class="fw-600 text-grey-500 ms-1">(All tax included)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3 p-1" *ngIf="!isEnded">
+        <div class="card-body p-3 border-0">
+          <div class="row align-items-center">
+            <div class="col-6">
+              <div
+                class="d-flex align-items-center font-xssss fw-700 ls-1 text-grey-700 text-dark"
+              >
+                <i class="font-md text-warning feather-sun me-2"></i>
+                <span class="">Weather</span>
+              </div>
+            </div>
+            <div
+              class="col-6 d-flex align-items-center flex-column font-xssss fw-700"
+            >
+              <span class="">
+                <img
+                  [src]="weather?.weatherState?.weatherIconUrl"
+                  alt="weather"
+                />
+              </span>
+              <div class="mx-2">
+                <span class="font-xss text-grey-600"
+                  >{{ weather?.temperature?.max | number: "1.0-0" }}°</span
+                >
+                <span class="font-xssss fw-600 text-grey-500"
+                  >/{{ weather?.temperature?.min | number: "1.0-0" }}</span
+                >
+              </div>
+              <span class="font-xss">{{ weather?.weatherState?.name }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3 p-1"
+        *ngIf="isEnded"
+      >
+        <div class="card-body p-3 border-0">
+          <div class="row justify-content-center">
+            <div class="col-lg-12 text-center">
+              <h4 class="text-grey-700 fw-700 mb-3 font-xss mb-4">
+                Add Feedback
+              </h4>
+            </div>
+          </div>
+
+          <form [formGroup]="feedbackForm" (ngSubmit)="onSubmitFeedback()">
+            <div class="row">
+              <div class="col-lg-12 mb-3">
+                <div
+                  class="form-group d-flex justify-content-between align-items-center"
+                >
+                  <label class="mont-font fw-600 font-xsss">Rate</label>
+                  <star-rating-control
+                    formControlName="rate"
+                    [showHalfStars]="true"
+                    [hoverEnabled]="true"
+                    [starType]="'svg'"
+                    staticColor="ok"
+                  ></star-rating-control>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-12 mb-3">
+                <label class="mont-font fw-600 font-xsss">Feedback</label>
+                <textarea
+                  formControlName="content"
+                  class="form-control mb-0 p-3 h100 bg-greylight lh-16"
+                  rows="5"
+                  placeholder="Write your feedback"
+                  spellcheck="false"
+                ></textarea>
+              </div>
+
+              <div class="col-lg-12">
+                <input
+                  type="submit"
+                  value="Submit"
+                  class="bg-primary-gradiant border-0 text-white fw-600 text-uppercase font-xssss float-left rounded-3 d-block mt-0 w-100 p-2 lh-34 text-center ls-3"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- end event details -->
+  </div>
+  <!-- end event name, description and description -->
+</div>

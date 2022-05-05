@@ -1,5 +1,4 @@
-/* TOASTR BUGFIX */
-#toast-container > div {
-  opacity: 1;
-  
-}
+@import '~mapbox-gl/dist/mapbox-gl.css';
+@import '~ngx-lightbox/lightbox.css';
+@import '~css-star-rating/css/star-rating.min.css';
+

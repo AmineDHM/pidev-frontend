@@ -5,8 +5,8 @@ import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import * as mapboxgl from "mapbox-gl";
 
 export interface CoordinatesType {
-  lat: number;
   lon: number;
+  lat: number;
 }
 
 @Component({
@@ -28,8 +28,8 @@ export class MapComponent implements OnInit {
 
   onDragEnd(event) {
     let data: CoordinatesType = {
-      lat: event.target.getLngLat().toArray()[0],
-      lon: event.target.getLngLat().toArray()[1],
+      lon: event.target.getLngLat().toArray()[0],
+      lat: event.target.getLngLat().toArray()[1],
     };
     this.coordinates.emit(data);
   }

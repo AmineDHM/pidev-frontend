@@ -1,9 +1,8 @@
 import { Observable } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { API_BASE_URL } from "../constants";
+import { API_BASE_URL, JWT_TOKEN } from "../constants";
 import { Injectable } from "@angular/core";
 import { EventType } from "./event-type";
-import { JWT_TOKEN } from "../jwt-token";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -23,7 +22,6 @@ export class EventService {
   }
 
   addEvent(event: EventType): Observable<EventType> {
-    console.log(event);
     return this.http.post<EventType>(
       `${API_BASE_URL}/events`,
       event,
@@ -31,9 +29,10 @@ export class EventService {
     );
   }
 
-  getEvent(event: EventType): Observable<EventType> {
+  getEvent(id: number): Observable<EventType> {
+    console.log(id);
     return this.http.get<EventType>(
-      `${API_BASE_URL}/events/${event.id}`,
+      `${API_BASE_URL}/events/${id}`,
       httpOptions
     );
   }
@@ -73,9 +72,9 @@ export class EventService {
     );
   }
 
-  inviteUsers(event: EventType, users: number[]): Observable<any> {
-    return this.http.post(
-      `${API_BASE_URL}/events/invite?usersId=${users.toString()}&eventId=${event.id}`,
+  inviteUsers(eventId: number, users: number[]): Observable<any> {
+    return this.http.get(
+      `${API_BASE_URL}/events/invite?usersId=${users.toString()}&eventId=${eventId}`,
       httpOptions
     );
   }
