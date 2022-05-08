@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { NavigationTopComponent } from './layouts/navigation-top/navigation-top.component';
 import { NavigationLeftComponent } from './layouts/navigation-left/navigation-left.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { AuthComponent } from './components/auth/auth.component';
@@ -29,6 +28,9 @@ import { authInterceptorProviders } from './services/auth-services/auth.intercep
 import { SettingsComponent } from './components/settings/settings.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { MomentModule } from 'ngx-moment';
+import { NewsFeedComponent } from './components/news-feed/news-feed.component';
+import { WeatherWidgetComponent } from './components/weather-widget/weather-widget.component';
+
 
 @NgModule({
   declarations: [
@@ -49,6 +51,7 @@ import { MomentModule } from 'ngx-moment';
     ProfanityFilterPipe,
     SettingsComponent,
     NotificationsComponent,
+    WeatherWidgetComponent
   ],
   imports: [
     BrowserModule,
