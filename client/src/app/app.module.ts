@@ -25,6 +25,10 @@ import { EventItemComponent } from './components/event-item/event-item.component
 import { LightboxModule } from 'ngx-lightbox';
 import { StarRatingModule } from 'angular-star-rating';
 import { ProfanityFilterPipe } from './pipes/profanity-filter-pipe.pipe';
+import { authInterceptorProviders } from './services/auth-services/auth.interceptor';
+import { SettingsComponent } from './components/settings/settings.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { MomentModule } from 'ngx-moment';
 
 @NgModule({
   declarations: [
@@ -43,6 +47,8 @@ import { ProfanityFilterPipe } from './pipes/profanity-filter-pipe.pipe';
     MapComponent,
     EventItemComponent,
     ProfanityFilterPipe,
+    SettingsComponent,
+    NotificationsComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,9 +66,10 @@ import { ProfanityFilterPipe } from './pipes/profanity-filter-pipe.pipe';
       accessToken: environment.mapbox.accessToken,
     }),
     LightboxModule,
-    StarRatingModule.forRoot()
+    StarRatingModule.forRoot(),
+    MomentModule,
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

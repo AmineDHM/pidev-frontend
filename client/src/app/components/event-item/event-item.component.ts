@@ -12,7 +12,7 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 })
 export class EventItemComponent implements OnInit {
   eventId = Number(this.route.snapshot.paramMap.get('id'));
-  isEnded = false
+  isStarted = false
   _albums: Array<any> = [];
   event!: EventType;
   feedbacks: any[] = [];
@@ -42,7 +42,7 @@ export class EventItemComponent implements OnInit {
     this.eventService.getEvent(this.eventId).subscribe({
       next: (res) => {
         this.event = res;
-        this.isEnded = (new Date(res.endDate) <= new Date())
+        this.isStarted = (new Date(res.startDate) < new Date())
         res.images.forEach((image) => {
           const src = `https://firebasestorage.googleapis.com/v0/b/pidev-405b8.appspot.com/o/${image.name}?alt=media`;
           const thumb = src;

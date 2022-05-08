@@ -1,22 +1,20 @@
-import { NotificationService } from './../../services/notification-services/notification.service';
-import { TokenService } from './../../services/auth-services/token.service';
 import { Component, OnInit } from '@angular/core';
-import { WebsocketService } from 'src/app/services/websocket-services/websocket.service';
 import { NotificationType } from 'src/app/services/notification-services/notification-type';
+import { NotificationService } from 'src/app/services/notification-services/notification.service';
+import { WebsocketService } from 'src/app/services/websocket-services/websocket.service';
 
 @Component({
-  selector: 'app-navigation-top',
-  templateUrl: './navigation-top.component.html',
-  styleUrls: ['./navigation-top.component.css'],
+  selector: 'app-notifications',
+  templateUrl: './notifications.component.html',
+  styleUrls: ['./notifications.component.css'],
 })
-export class NavigationTopComponent implements OnInit {
+export class NotificationsComponent implements OnInit {
   constructor(
-    private webSocketService: WebsocketService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private webSocketService: WebsocketService
   ) {}
 
   notifications: NotificationType[] = [];
-  highlighted: boolean[] = [];
 
   ngOnInit(): void {
     //get all notifications
@@ -37,11 +35,12 @@ export class NavigationTopComponent implements OnInit {
     });
   }
 
-  highlight(id: any) {
-    this.highlighted[id] = true;
-  }
-
-  removeHightlight(id: any) {
-    this.highlighted[id] = false;
+  markAsSeen(id: number | undefined) {
+    this.notificationService.markAsSeen(id).subscribe({
+      next: (res) => {
+        console.log(res);
+      },
+      error: (err) => console.log(err),
+    });
   }
 }

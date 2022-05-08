@@ -30,6 +30,7 @@
     "net": "^1.0.2",
     "ngx-lightbox": "^2.5.2",
     "ngx-mapbox-gl": "^7.1.2",
+    "ngx-moment": "^6.0.2",
     "ngx-toastr": "^14.3.0",
     "owl.carousel": "^2.3.4",
     "rxjs": "~7.5.0",
