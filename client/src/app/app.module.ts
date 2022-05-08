@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { NavigationTopComponent } from './layouts/navigation-top/navigation-top.component';
 import { NavigationLeftComponent } from './layouts/navigation-left/navigation-left.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { AuthComponent } from './components/auth/auth.component';
@@ -25,6 +24,8 @@ import { EventItemComponent } from './components/event-item/event-item.component
 import { LightboxModule } from 'ngx-lightbox';
 import { StarRatingModule } from 'angular-star-rating';
 import { ProfanityFilterPipe } from './pipes/profanity-filter-pipe.pipe';
+import { WeatherWidgetComponent } from './components/weather-widget/weather-widget.component';
+import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,8 @@ import { ProfanityFilterPipe } from './pipes/profanity-filter-pipe.pipe';
     MapComponent,
     EventItemComponent,
     ProfanityFilterPipe,
+    NewsFeedComponent,
+    WeatherWidgetComponent
   ],
   imports: [
     BrowserModule,
