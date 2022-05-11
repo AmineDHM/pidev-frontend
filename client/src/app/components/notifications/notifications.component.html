@@ -9,7 +9,7 @@
         Notifications
         <span
           class="circle-count bg-warning text-white font-xsssss rounded-3 ms-2 ls-3 fw-600 p-2 mt-0"
-          >{{ (notifications | keyvalue)?.length }}</span
+          >{{ unseen }}</span
         >
         <a href="#" class="ms-auto btn-round-sm bg-greylight rounded-3"
           ><i class="feather-hard-drive font-xss text-grey-500"></i
@@ -25,10 +25,12 @@
       <ul class="notification-box">
         <li
           *ngFor="let item of notifications"
-          [ngClass]="!item?.isSeen ? 'bg-lightblue theme-light-bg' : ''"
+          [ngClass]="!item?.isSeen && !seen[item?.id || 0] ? 'bg-lightblue theme-light-bg' : ''"
+          class="mb-2"
         >
           <a
             (click)="markAsSeen(item?.id)"
+            [routerLink]="'/events/' + item?.eventId"
             class="d-flex align-items-center p-3 rounded-3 cursor-pointer"
           >
             <img

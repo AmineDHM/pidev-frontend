@@ -13,10 +13,6 @@ const routes: Routes = [
     component: PagesComponent,
     children: [
       {
-        path: 'map',
-        component: MapComponent
-      },
-      {
         path: "event",
         loadChildren: () =>
           import("./event-management/event-management.module").then(

@@ -4,4 +4,5 @@ export interface NotificationType {
   type: string;
   isSeen: boolean;
   sentAt: Date;
+  eventId: number;
 }

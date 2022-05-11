@@ -23,12 +23,12 @@ export class InviteUsersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.eventService.getAllEvents().subscribe({
-      next: (res: EventType[]) => (this.events = res),
+    this.eventService.getUpcomingEvent().subscribe({
+      next: (res) => (this.events = res),
     });
 
     this.userService.getAllUsers().subscribe({
-      next: (res: UserType[]) => (this.users = res),
+      next: (res) => (this.users = res),
     });
   }
 
@@ -45,8 +45,6 @@ export class InviteUsersComponent implements OnInit {
   }
 
   invite() {
-    console.log(this.selectedEvent);
-    console.log(this.selectedUsers);
     this.eventService
       .inviteUsers(this.selectedEvent, this.selectedUsers)
       .subscribe({
@@ -60,7 +58,6 @@ export class InviteUsersComponent implements OnInit {
         },
         error: (err) => {
           this.toastrService.danger("Something went wrong", "Error");
-
           console.log(err);
         },
       });

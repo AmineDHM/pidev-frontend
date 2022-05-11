@@ -1,10 +1,25 @@
 <nb-card>
-  <nb-card-header>
-    Smart Table
-  </nb-card-header>
+  <nb-card-header> Smart Table </nb-card-header>
 
   <nb-card-body>
-    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+    <div class="search-box">
+      <input
+        id="search"
+        #search
+        class="search"
+        type="text"
+        placeholder="Search..."
+        (keydown.enter)="onSearch(search.value)"
+        nbInput
+      />
+    </div>
+
+    <ng2-smart-table
+      [settings]="settings"
+      [source]="source"
+      (deleteConfirm)="onDeleteConfirm($event)"
+      (userRowSelect)="selectRow($event)"
+    >
     </ng2-smart-table>
   </nb-card-body>
 </nb-card>

@@ -13,6 +13,7 @@ import {
   NbSelectModule,
   NbSpinnerModule,
   NbStepperModule,
+  NbTabsetModule,
   NbTimepickerModule,
   NbTreeGridModule,
   NbUserModule,
@@ -30,13 +31,15 @@ import { CommonModule } from "@angular/common";
 import { EventManagementRoutingModule } from "./event-management-routing.module";
 import { EventManagementComponent } from "./event-management.component";
 import { Ng2SmartTableModule } from "ng2-smart-table";
-import { NewEventComponent } from './new-event/new-event.component';
-import { ShowEventsComponent } from './show-events/show-events.component';
-import { YesNoComponent } from './yes-no/yes-no.component';
-import { MapComponent } from './map/map.component';
-import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
-import { environment } from '../../../environments/environment';
-import { InviteUsersComponent } from './invite-users/invite-users.component';
+import { NewEventComponent } from "./new-event/new-event.component";
+import { ShowEventsComponent } from "./show-events/show-events.component";
+import { YesNoComponent } from "./yes-no/yes-no.component";
+import { MapComponent } from "./map/map.component";
+import { NgxMapboxGLModule } from "ngx-mapbox-gl";
+import { environment } from "../../../environments/environment";
+import { InviteUsersComponent } from "./invite-users/invite-users.component";
+import { DragDropFileUploadDirective } from "../../directives/drag-drop-file-upload.directive";
+import { EventItemComponent } from './event-item/event-item.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,9 @@ import { InviteUsersComponent } from './invite-users/invite-users.component';
     EventManagementComponent,
     YesNoComponent,
     MapComponent,
-    InviteUsersComponent
+    InviteUsersComponent,
+    DragDropFileUploadDirective,
+    EventItemComponent,
   ],
   imports: [
     FormsModule,
@@ -75,6 +80,7 @@ import { InviteUsersComponent } from './invite-users/invite-users.component';
     Ng2SmartTableModule,
     ModalOverlaysModule,
     NbListModule,
+    NbTabsetModule,
     NbDialogModule.forChild(),
     NgxMapboxGLModule.withConfig({
       accessToken: environment.mapbox.accessToken,

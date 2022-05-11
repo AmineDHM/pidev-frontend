@@ -4,10 +4,14 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl : 'http://localhost:8080/api',
-    mapbox: {
+  apiBaseUrl: 'http://localhost:8080/api',
+  mapbox: {
     accessToken:
       'pk.eyJ1IjoiYW1pbmUxNCIsImEiOiJjbDJkZmExazIwMGNoM2NyMXk2cW5wdXdwIn0.GRYBHFqp1puXjq7Z8PepCQ',
+  },
+  mcv: {
+    RapidAPI_Host: 'microsoft-computer-vision3.p.rapidapi.com',
+    RapidAPI_Key: '91dfb77e42mshdfeb181c79b1004p1f2307jsn09fd2337d643',
   },
 };
 

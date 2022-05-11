@@ -38,6 +38,7 @@
           "
           alt="event-banner"
           class="rounded-3 w-75"
+          loading="lazy"
         />
       </div>
     </div>
@@ -56,7 +57,7 @@
           </h2>
           <a
             (click)="toggleFav(event?.id)"
-            class="btn-round-md d-inline-block rounded-3 cursor-pointer"
+            class="btn-round-xl cursor-pointer"
             [ngClass]="isFav ? 'bg-danger' : 'bg-grey'"
             ><i
               class="feather-heart font-lg"
@@ -84,6 +85,7 @@
               class="img-fluid w-100 rounded-3 fill-img cursor-pointer"
               [src]="image.thumb"
               (click)="open(i)"
+              loading="lazy"
             />
           </div>
         </div>
@@ -165,6 +167,22 @@
 
     <!-- event details -->
     <div class="col-xl-4 col-xxl-3 col-lg-4 ps-0">
+      <div
+        *ngIf="!isStarted && isInvited"
+        class="bg-blue-gradiant card w-100 shadow-lg rounded-xxl border-0 mb-3 mt-3 p-2"
+      >
+        <div class="card-body p-3 border-0">
+          <div
+            class="d-flex font-xsss fw-700 text-white flex-column align-items-center justify-content-center"
+          >
+            <span>Your have been invited to this event</span>
+            <a class="text-white bg-success p-2 rounded-3 cursor-pointer mt-3"
+              >Accept</a
+            >
+          </div>
+        </div>
+      </div>
+
       <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3 p-1">
         <div class="card-body p-3 border-0">
           <div class="row align-items-center">
@@ -228,7 +246,10 @@
         </div>
       </div>
 
-      <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3 p-1" *ngIf="!isStarted">
+      <div
+        class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3 p-1"
+        *ngIf="!isStarted"
+      >
         <div class="card-body p-3 border-0">
           <div class="row align-items-center">
             <div class="col-6">
@@ -264,7 +285,7 @@
 
       <div
         class="card w-100 shadow-xss rounded-xxl border-0 mb-3 mt-3 p-1"
-        *ngIf="isStarted"
+        *ngIf="isStarted && isParticipated"
       >
         <div class="card-body p-3 border-0">
           <div class="row justify-content-center">

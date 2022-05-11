@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { lastValueFrom } from 'rxjs';
 import { NotificationType } from 'src/app/services/notification-services/notification-type';
 import { NotificationService } from 'src/app/services/notification-services/notification.service';
 import { WebsocketService } from 'src/app/services/websocket-services/websocket.service';
@@ -15,31 +16,44 @@ export class NotificationsComponent implements OnInit {
   ) {}
 
   notifications: NotificationType[] = [];
+  seen: boolean[] = [];
+  unseen = 0;
 
-  ngOnInit(): void {
+  ngOnInit() {
     //get all notifications
-    this.notificationService.getAllNotifications().subscribe({
-      next: (res) => {
-        this.notifications = res;
-      },
-      error: (err) => console.log(err),
-    });
-
-    //connect to ws
-    this.webSocketService.connect();
+    this.getAllNotifications();
+    this.getUnseenCount();
 
     //listen to notifications update it
     this.webSocketService.notifications$.subscribe({
-      next: (res) => this.notifications.unshift(res),
+      next: (res) => {
+        this.notifications.unshift(res);
+        this.unseen++;
+      },
       error: (err) => console.log(err),
     });
   }
 
-  markAsSeen(id: number | undefined) {
-    this.notificationService.markAsSeen(id).subscribe({
-      next: (res) => {
-        console.log(res);
-      },
+  async markAsSeen(id: any) {
+    try {
+      await lastValueFrom(this.notificationService.markAsSeen(id));
+      this.seen[id] = true;
+      this.unseen--;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  getAllNotifications() {
+    this.notificationService.getAllNotifications().subscribe({
+      next: (res) => (this.notifications = res),
+      error: (err) => console.log(err),
+    });
+  }
+
+  getUnseenCount() {
+    this.notificationService.getUnseenCount().subscribe({
+      next: (res) => (this.unseen = res.count),
       error: (err) => console.log(err),
     });
   }

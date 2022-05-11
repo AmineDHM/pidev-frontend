@@ -1,0 +1,220 @@
+<div class="row">
+  <div class="col-lg-12 mb-3">
+    <div
+      class="card p-lg-5 p-4 bg-primary-gradiant rounded-3 shadow-xss bg-pattern border-0 overflow-hidden"
+    >
+      <div class="bg-pattern-div"></div>
+      <h2 class="display2-size display2-md-size fw-700 text-white mb-0 mt-0">
+        Checkout
+      </h2>
+    </div>
+  </div>
+</div>
+
+<div class="card w-100 border-0 bg-white shadow-xs p-0 mb-4">
+  <div class="card-body p-lg-5 p-4 w-100 border-0">
+    <div class="row">
+      <div class="col-lg-5">
+        <div class="col-lg-12 ps-0">
+          <h4 class="mb-4 font-lg fw-700 mont-font mb-5">Saved Card</h4>
+        </div>
+      </div>
+
+      <div class="col-lg-6 offset-lg-1">
+        <div class="rounded-xxl bg-greylight h-100 p-3">
+          <div class="col-lg-12 ps-0">
+            <!-- <h4 class="mb-4 font-xs fw-700 mont-font mt-0">Add Card </h4> -->
+          </div>
+          <div class="col-lg-12">
+            <!--  <div
+              class="item ms-auto me-auto mt-3 w-100 h150 bg-white rounded-xxl text-left shadow-lg ps-3 pt-2 align-items-end flex-column d-flex"
+            >
+              <div
+                class="card border-0 bg-transparent-card shadow-none p-0 text-left w-100"
+              >
+                <div class="row">
+                  <div class="col-6 ps-2">
+                    <img
+                      src="assets/images/b-17.png"
+                      alt="icon"
+                      class="w60 float-left d-inline-block"
+                    />
+                  </div>
+                  <div class="col-6 text-right pe-4">
+                    <img
+                      src="assets/images/chip.png"
+                      alt="icon"
+                      class="w30 float-right d-inline-block mt-2 me-2"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="card border-0 bg-transparent-card shadow-none p-0 text-left w-100 mt-auto"
+              >
+                <h4
+                  class="text-grey-900 font-sm fw-700 mont-font text-dark-color"
+                >
+                  **** **** **** 2234
+                  <span
+                    class="d-block fw-500 text-grey-500 font-xssss mt-0 mb-3 text-dark-color"
+                    >Credit Card</span
+                  >
+                </h4>
+              </div>
+            </div> -->
+
+            <div class="card border-0 mb-4 shadow-none">
+              <div class="card-body d-block text-left p-0">
+                <div
+                  class="item w-100 h175 bg-primary rounded-xxl text-left shadow-lg ps-3 pe-3 pt-2 align-items-end flex-column d-flex"
+                >
+                  <div
+                    class="card bg-transparent border-0 bg-transparent-card shadow-none p-0 text-left w-100"
+                  >
+                    <div class="row">
+                      <div class="col-6">
+                        <img
+                          [src]="'assets/images/b-10.png'"
+                          alt="icon"
+                          class="w40 float-left d-inline-block"
+                        />
+                      </div>
+                      <div class="col-6 text-right pe-1">
+                        <img
+                          src="assets/images/chip.png"
+                          alt="icon"
+                          class="w30 float-right d-inline-block mt-2 me-2 rounded-3"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="card bg-transparent border-0 bg-transparent-card shadow-none p-0 text-left w-100 mt-auto"
+                  >
+                    <h4 class="font-sm fw-700 mont-font text-white">
+                      {{ payForm.value.name }}
+                    </h4>
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <h4 class="font-sm fw-700 mont-font text-white">
+                        **** **** **** ****
+                      </h4>
+                      <h4 class="font-sm fw-700 mont-font text-white">
+                        {{
+                          payForm.value.exp_month +
+                            (payForm.value.exp_month || payForm.value.exp_year
+                              ? "/"
+                              : "") +
+                            payForm.value.exp_year
+                        }}
+                      </h4>
+                      <h4 class="font-sm fw-700 mont-font text-white">
+                        {{ payForm.value.cvv }}
+                      </h4>
+                    </div>
+                    <span class="d-block fw-500 font-xssss mt-0 mb-3 text-white"
+                      >Credit Card</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 mt-5">
+            <form [formGroup]="payForm">
+              <div class="form-group mb-1">
+                <label
+                  class="text-dark-color text-grey-600 font-xssss mb-2 fw-600"
+                  >Card Number</label
+                >
+                <div class="form-group icon-tab">
+                  <input
+                    type="text"
+                    class="bg-white font-xsss border-0 rounded-3 form-control ps-4 bg-color-none border-bottom text-grey-900"
+                    placeholder="1234 1234 1234 1234"
+                    formControlName="number"
+                  />
+                </div>
+              </div>
+              <div class="form-group mb-1">
+                <label
+                  class="text-dark-color text-grey-600 font-xssss mb-2 fw-600"
+                  >Card Holder Name</label
+                >
+                <div class="form-group icon-tab">
+                  <input
+                    type="text"
+                    class="bg-white border-0 rounded-3 form-control ps-4 bg-color-none border-bottom text-grey-900"
+                    placeholder="Name"
+                    formControlName="name"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-group mb-1">
+                    <label
+                      class="text-dark-color text-grey-600 font-xssss mb-2 fw-600"
+                      >Month</label
+                    >
+                    <div class="form-group icon-tab">
+                      <input
+                        type="text"
+                        class="bg-white border-0 rounded-3 form-control ps-4 bg-color-none border-bottom text-grey-900"
+                        placeholder="03"
+                        formControlName="exp_month"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="form-group mb-1">
+                    <label
+                      class="text-dark-color text-grey-600 font-xssss mb-2 fw-600"
+                      >Year</label
+                    >
+                    <div class="form-group icon-tab">
+                      <input
+                        type="text"
+                        class="bg-white border-0 rounded-3 form-control ps-4 bg-color-none border-bottom text-grey-900"
+                        placeholder="2020"
+                        formControlName="exp_year"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-4">
+                  <div class="form-group mb-1">
+                    <label
+                      class="text-dark-color text-grey-600 font-xssss mb-2 fw-600"
+                      >CVV</label
+                    >
+                    <div class="form-group icon-tab">
+                      <input
+                        type="text"
+                        class="bg-white border-0 rounded-3 form-control ps-4 bg-color-none border-bottom text-grey-900"
+                        placeholder="123"
+                        formControlName="cvv"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <a
+                    href="#"
+                    class="rounded-3 bg-current mb-2 mt-4 p-3 w-100 fw-600 fw-700 text-center font-xssss mont-font text-uppercase ls-3 text-white d-block"
+                    >Pay</a
+                  >
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

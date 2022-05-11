@@ -39,7 +39,8 @@
               "node_modules/leaflet/dist/leaflet.css",
               "src/app/@theme/styles/styles.scss",
               "node_modules/mapbox-gl/dist/mapbox-gl.css",
-              "node_modules/@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css"
+              "node_modules/@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css",
+              "node_modules/nebular-icons/css/nebular-icons.css"
             ],
             "scripts": [
               "node_modules/pace-js/pace.min.js",

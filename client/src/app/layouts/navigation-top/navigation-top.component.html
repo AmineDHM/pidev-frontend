@@ -68,10 +68,7 @@
     id="dropdownMenu3"
     data-bs-toggle="dropdown"
     aria-expanded="false"
-    ><span
-      *ngIf="(notifications | keyvalue)?.length"
-      class="notifications-counter"
-      >{{ (notifications | keyvalue)?.length }}</span
+    ><span *ngIf="unseen" class="notifications-counter">{{ unseen }}</span
     ><i class="feather-bell font-xl text-current"></i
   ></a>
   <div
@@ -86,18 +83,23 @@
     >
       No new notifications
     </h6>
-    <div
+    <a
+      [routerLink]="'/events/' + item?.eventId"
       class="card w-100 border-0 mb-3 notification-item"
       *ngFor="let item of notifications"
       (mouseover)="highlight(item?.id)"
       (mouseout)="removeHightlight(item?.id)"
+      (click)="markAsSeen(item?.id)"
       [ngClass]="
         highlighted[item?.id || 0]
           ? 'highlight theme-light-bg'
           : 'bg-transparent-card'
       "
     >
-      <span class="not-seen bg-info" *ngIf="!item?.isSeen"></span>
+      <span
+        class="not-seen bg-info"
+        *ngIf="!item?.isSeen && !seen[item?.id || 0]"
+      ></span>
       <img
         src="assets/images/user-4.png"
         alt="user"
@@ -110,7 +112,7 @@
         </span>
       </h5>
       <h6 class="text-grey-500 fw-500 font-xssss lh-4">{{ item?.content }}</h6>
-    </div>
+    </a>
     <hr class="mt-0" />
     <a routerLink="/notifications" class="float-right font-xsss"
       >View All Notifications</a

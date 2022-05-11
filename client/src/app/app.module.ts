@@ -30,6 +30,7 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { MomentModule } from 'ngx-moment';
 import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 import { WeatherWidgetComponent } from './components/weather-widget/weather-widget.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { WeatherWidgetComponent } from './components/weather-widget/weather-widg
     ProfanityFilterPipe,
     SettingsComponent,
     NotificationsComponent,
-    WeatherWidgetComponent
+    WeatherWidgetComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

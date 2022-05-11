@@ -29,4 +29,8 @@ export class NotificationService {
       httpOptions
     );
   }
+
+  getUnseenCount(): Observable<any> {
+    return this.http.get(`${API_BASE_URL}/count-unseen`, httpOptions);
+  }
 }

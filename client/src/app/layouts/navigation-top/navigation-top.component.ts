@@ -3,6 +3,7 @@ import { TokenService } from './../../services/auth-services/token.service';
 import { Component, OnInit } from '@angular/core';
 import { WebsocketService } from 'src/app/services/websocket-services/websocket.service';
 import { NotificationType } from 'src/app/services/notification-services/notification-type';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-navigation-top',
@@ -17,22 +18,23 @@ export class NavigationTopComponent implements OnInit {
 
   notifications: NotificationType[] = [];
   highlighted: boolean[] = [];
+  unseen = 0;
+  seen: boolean[] = [];
 
   ngOnInit(): void {
     //get all notifications
-    this.notificationService.getAllNotifications().subscribe({
-      next: (res) => {
-        this.notifications = res;
-      },
-      error: (err) => console.log(err),
-    });
+    this.getAllNotifications();
+    this.getUnseenCount();
 
     //connect to ws
     this.webSocketService.connect();
 
     //listen to notifications update it
     this.webSocketService.notifications$.subscribe({
-      next: (res) => this.notifications.unshift(res),
+      next: (res) => {
+        this.notifications.unshift(res);
+        this.unseen++;
+      },
       error: (err) => console.log(err),
     });
   }
@@ -43,5 +45,29 @@ export class NavigationTopComponent implements OnInit {
 
   removeHightlight(id: any) {
     this.highlighted[id] = false;
+  }
+
+  async markAsSeen(id: any) {
+    try {
+      await lastValueFrom(this.notificationService.markAsSeen(id));
+      this.seen[id] = true;
+      this.unseen--;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  getAllNotifications() {
+    this.notificationService.getAllNotifications().subscribe({
+      next: (res) => (this.notifications = res),
+      error: (err) => console.log(err),
+    });
+  }
+
+  getUnseenCount() {
+    this.notificationService.getUnseenCount().subscribe({
+      next: (res) => (this.unseen = res.count),
+      error: (err) => console.log(err),
+    });
   }
 }

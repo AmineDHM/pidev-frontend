@@ -38,7 +38,7 @@ export class AuthInterceptor implements HttpInterceptor {
               return;
             }
             this.tokenService.signOut();
-            window.location.href = loginPath;
+            this.router.navigate([loginPath]);
           }
         }
       )

@@ -99,4 +99,11 @@ export class EventService {
       httpOptions
     );
   }
+
+  getUpcomingEvents(): Observable<EventType[]> {
+    return this.http.get<EventType[]>(
+      `${API_BASE_URL}/events/upcoming`,
+      httpOptions
+    );
+  }
 }

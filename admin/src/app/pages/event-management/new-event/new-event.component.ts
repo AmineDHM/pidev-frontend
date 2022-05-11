@@ -27,13 +27,13 @@ export class NewEventComponent implements OnInit {
   coordinates: CoordinatesType;
 
   addEventForm = this.formBuilder.group({
-    name: new FormControl(null, Validators.required),
-    startDate: new FormControl(null, Validators.required),
-    endDate: new FormControl(null, Validators.required),
-    venue: new FormControl(null, Validators.required),
-    city: new FormControl(null, Validators.required),
-    fees: new FormControl(null, Validators.required),
-    banner: new FormControl(),
+    name: new FormControl("", Validators.required),
+    description: new FormControl("", Validators.required),
+    startDate: new FormControl("", Validators.required),
+    endDate: new FormControl("", Validators.required),
+    venue: new FormControl("", Validators.required),
+    city: new FormControl("", Validators.required),
+    fees: new FormControl("", Validators.required),
   });
 
   showToast(type: NbComponentStatus, title: string, body: string) {
@@ -57,29 +57,37 @@ export class NewEventComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.addEventForm);
+    console.log(this.addEventForm.value);
+    console.log(this.coordinates);
     this.loading = true;
-    this.eventService.addEvent({ ...this.addEventForm.value, ...this.coordinates }).subscribe(
-      (res) => {
-        this.eventService.uploadEventBanner(this.banner, res).subscribe(
-          () => console.log("file uploaded successfully"),
-          (err) => console.log("something went wrong while upload file ", err),
-          () => {
-            this.loading = false;
-            this.addEventForm.reset();
-            this.showToast(
-              "success",
-              "Success",
-              "Event is Added Successfully !"
-            );
-          }
-        );
-      },
-      (err) => {
-        console.log("error ", err);
-        this.showToast("danger", "Error", "Something Went Wrong Try Again !");
-        this.loading = false;
-      }
-    );
+    this.eventService
+      .addEvent({ ...this.addEventForm.value, ...this.coordinates })
+      .subscribe(
+        (res) => {
+          this.eventService.uploadEventBanner(this.banner, res).subscribe(
+            () => console.log("file uploaded successfully"),
+            (err) =>
+              console.log("something went wrong while upload file ", err),
+            () => {
+              this.loading = false;
+              this.addEventForm.reset();
+              this.showToast(
+                "success",
+                "Success",
+                "Event is Added Successfully !"
+              );
+            }
+          );
+        },
+        (err) => {
+          console.log("error ", err);
+          this.showToast("danger", "Error", "Something Went Wrong Try Again !");
+          this.loading = false;
+        }
+      );
+  }
+
+  upload(e) {
+    this.banner = e[0];
   }
 }

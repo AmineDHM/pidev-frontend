@@ -21,6 +21,13 @@ export class EventService {
     return this.http.get<EventType[]>(`${API_BASE_URL}/events`, httpOptions);
   }
 
+  getUpcomingEvent(): Observable<EventType[]> {
+    return this.http.get<EventType[]>(
+      `${API_BASE_URL}/events/upcoming`,
+      httpOptions
+    );
+  }
+
   addEvent(event: EventType): Observable<EventType> {
     return this.http.post<EventType>(
       `${API_BASE_URL}/events`,
@@ -30,7 +37,6 @@ export class EventService {
   }
 
   getEvent(id: number): Observable<EventType> {
-    console.log(id);
     return this.http.get<EventType>(
       `${API_BASE_URL}/events/${id}`,
       httpOptions
@@ -46,7 +52,8 @@ export class EventService {
 
   updateEvent(event: EventType): Observable<EventType> {
     return this.http.put<EventType>(
-      `${API_BASE_URL}/events/${event.id}`,
+      `${API_BASE_URL}/events`,
+      event,
       httpOptions
     );
   }
@@ -65,17 +72,45 @@ export class EventService {
     );
   }
 
-  uploadEventImages(event: EventType): Observable<EventType> {
-    return this.http.post<EventType>(
-      `${API_BASE_URL}/events/upload-image?eventId=${event.id}`,
+  inviteUsers(eventId: number, users: number[]): Observable<any> {
+    return this.http.post(
+      `${API_BASE_URL}/events/invite?usersId=${users.toString()}&eventId=${eventId}`,
       httpOptions
     );
   }
 
-  inviteUsers(eventId: number, users: number[]): Observable<any> {
+  getInvitedUsers(eventId: number): Observable<any> {
     return this.http.get(
-      `${API_BASE_URL}/events/invite?usersId=${users.toString()}&eventId=${eventId}`,
+      `${API_BASE_URL}/events/invited-users?eventId=${eventId}`,
       httpOptions
+    );
+  }
+
+  getAcceptedUsers(eventId: number): Observable<any> {
+    return this.http.get(
+      `${API_BASE_URL}/events/accepted-users?eventId=${eventId}`,
+      httpOptions
+    );
+  }
+
+  deleteImage(name: string): Observable<any> {
+    return this.http.delete(
+      `${API_BASE_URL}/events/delete-image/${name}`,
+      httpOptions
+    );
+  }
+
+  uploadImagesToEvent(eventId: number, imgs: File[]): Observable<any> {
+    const formData: FormData = new FormData();
+    imgs.forEach((img) => formData.append("imgs", img, img.name));
+    return this.http.post(
+      `${API_BASE_URL}/events/upload-image?eventId=${eventId}`,
+      formData,
+      {
+        headers: new HttpHeaders({
+          Authorization: JWT_TOKEN,
+        }),
+      }
     );
   }
 }

@@ -1,3 +1,8 @@
+export interface ImageType {
+  id?: number;
+  name: string;
+}
+
 export interface EventType {
   id?: number;
   name: string;
@@ -6,6 +11,9 @@ export interface EventType {
   venue: string;
   fees: number;
   banner: File | string;
-  lon: number,
-  lat: number
+  lon: number;
+  lat: number;
+  description: string;
+  city: string;
+  images: ImageType[];
 }

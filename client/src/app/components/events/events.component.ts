@@ -1,6 +1,7 @@
 import { EventType } from './../../services/event-services/event-type';
 import { EventService } from './../../services/event-services/event.service';
 import { Component, OnInit } from '@angular/core';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-events',
@@ -12,14 +13,16 @@ export class EventsComponent implements OnInit {
   isLoading = true;
   constructor(private eventService: EventService) {}
 
-  ngOnInit(): void {
-    this.eventService.getAllEvents().subscribe({
-      next: (res) => (this.events = res),
-      error: (err) => {
-        this.isLoading = false;
-        console.log(err);
-      },
-      complete: () => (this.isLoading = false),
-    });
+  async ngOnInit() {
+    await this.getUpcomingEvents();
+    this.isLoading = false;
+  }
+
+  async getUpcomingEvents() {
+    try {
+      this.events = await lastValueFrom(this.eventService.getUpcomingEvents());
+    } catch (err) {
+      console.log(err);
+    }
   }
 }
