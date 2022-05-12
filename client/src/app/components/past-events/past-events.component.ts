@@ -32,4 +32,24 @@ export class PastEventsComponent implements OnInit {
     this.events = await lastValueFrom(this.eventService.search(this.search));
     this.events = this.events.filter((e) => new Date(e.endDate) <= new Date());
   }
+
+  async getInvitedEvents() {
+    this.events = await lastValueFrom(this.eventService.getInvitedEvents());
+  }
+
+  async getAcceptedEvents() {
+    this.events = await lastValueFrom(this.eventService.getAcceptedEvents());
+  }
+
+  async reset() {
+    await this.getPastEvents();
+  }
+
+  async filtre(e: any) {
+    if (e.target.value) {
+      await this.getInvitedEvents();
+    } else {
+      await this.getAcceptedEvents();
+    }
+  }
 }

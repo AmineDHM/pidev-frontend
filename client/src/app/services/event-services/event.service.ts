@@ -75,11 +75,11 @@ export class EventService {
     );
   }
 
-  getInvitedEvents(id: number): Observable<any> {
+  getInvitedEvents(): Observable<any> {
     return this.http.get(`${API_BASE_URL}/get-invited-events`, httpOptions);
   }
 
-  getAcceptedEvents(id: number): Observable<any> {
+  getAcceptedEvents(): Observable<any> {
     return this.http.get(`${API_BASE_URL}/get-accepted-events`, httpOptions);
   }
 

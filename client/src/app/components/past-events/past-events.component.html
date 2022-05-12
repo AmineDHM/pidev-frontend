@@ -32,9 +32,7 @@
       <div class="col-xl-12">
         <div class="card shadow-xss w-100 d-block d-flex border-0 p-4 mb-3">
           <div class="card-body d-flex align-items-center p-0">
-            <h2 class="fw-700 mb-0 mt-0 font-md text-grey-900">
-              Past Events
-            </h2>
+            <h2 class="fw-700 mb-0 mt-0 font-md text-grey-900">Past Events</h2>
             <div class="search-form-2 ms-auto">
               <i class="ti-search font-xss"></i>
               <input
@@ -45,10 +43,23 @@
                 (keyup)="fireSearch()"
               />
             </div>
+
+            <select
+              class="form-select float-right w175 ms-3"
+              aria-label="Default select example"
+              (change)="filtre($event)"
+            >
+              <option selected disabled>Choose Filtre</option>
+              <option value="0">Invited Events</option>
+              <option value="1">Participated Event</option>
+            </select>
             <a
-              href="#"
-              class="btn-round-md ms-2 bg-greylight theme-dark-bg rounded-3"
-              ><i class="feather-filter font-xss text-grey-500"></i
+              class="btn-round-md ms-2 bg-greylight theme-dark-bg rounded-3 cursor-pointer"
+              (click)="reset()"
+              ><i
+                _ngcontent-iuk-c82=""
+                class="feather-rotate-ccw font-xss text-grey-500"
+              ></i
             ></a>
           </div>
         </div>
