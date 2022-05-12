@@ -1,0 +1,87 @@
+<div class="preloader-wrap p-3" *ngIf="loading">
+  <div class="box shimmer">
+    <div class="lines">
+      <div class="line s_shimmer"></div>
+      <div class="line s_shimmer"></div>
+      <div class="line s_shimmer"></div>
+      <div class="line s_shimmer"></div>
+    </div>
+  </div>
+  <div class="box shimmer mb-3">
+    <div class="lines">
+      <div class="line s_shimmer"></div>
+      <div class="line s_shimmer"></div>
+      <div class="line s_shimmer"></div>
+      <div class="line s_shimmer"></div>
+    </div>
+  </div>
+  <div class="box shimmer">
+    <div class="lines">
+      <div class="line s_shimmer"></div>
+      <div class="line s_shimmer"></div>
+      <div class="line s_shimmer"></div>
+      <div class="line s_shimmer"></div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!loading">
+  <div class="row">
+    <div class="col-lg-12 mb-3">
+      <div
+        class="card p-lg-5 p-4 bg-primary-gradiant rounded-3 shadow-xss bg-pattern border-0 overflow-hidden"
+      >
+        <div class="bg-pattern-div"></div>
+        <h2 class="display2-size display2-md-size fw-700 text-white mb-0 mt-0">
+          Your Event Pass
+        </h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="card w-100 border-0 bg-white shadow-xs p-0 mb-4">
+    <div class="card-body p-lg-5 p-4 w-100 border-0">
+      <div class="pass bg-gold-gradiant shadow-lg">
+        <div class="pass-container text-white">
+          <div class="event-info">
+            <span class="fw-800 font-lg">Beach Party</span>
+            <span>
+              <i class="font-md feather-map-pin me-2"></i>
+              {{ userEvent.event.venue }}, {{ userEvent.event.city }}
+            </span>
+            <span>
+              <i class="font-md feather-clock me-2"></i>
+              {{ userEvent.event.startDate | date: "short" }}
+            </span>
+            
+          </div>
+          <img
+          [src]="
+            'https://firebasestorage.googleapis.com/v0/b/pidev-405b8.appspot.com/o/' +
+            userEvent.event.banner +
+            '?alt=media'
+          "
+          alt="banner"
+          class="banner"
+        />
+        <div class="qr-container">
+          <img
+          [src]="'data:image/png;base64,' + passQr"
+          alt="pass qr code"
+          class="qr"
+        />
+        <h6 class="text-center text-grey mt-2">(one time use only)</h6>
+        </div>
+          
+        </div>
+      </div>
+      <h2 class="text-center mt-4">
+        {{
+          userEvent.pass.isUsed
+            ? "You've redemeed your pass"
+            : "Your pass is still available to redeem"
+        }}
+      </h2>
+    </div>
+  </div>
+</div>

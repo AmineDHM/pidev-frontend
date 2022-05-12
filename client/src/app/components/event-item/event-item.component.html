@@ -168,7 +168,7 @@
     <!-- event details -->
     <div class="col-xl-4 col-xxl-3 col-lg-4 ps-0">
       <div
-        *ngIf="!isStarted && isInvited"
+        *ngIf="!isStarted && isInvited && !isParticipated"
         class="bg-blue-gradiant card w-100 shadow-lg rounded-xxl border-0 mb-3 mt-3 p-2"
       >
         <div class="card-body p-3 border-0">
@@ -176,8 +176,30 @@
             class="d-flex font-xsss fw-700 text-white flex-column align-items-center justify-content-center"
           >
             <span>Your have been invited to this event</span>
-            <a class="text-white bg-success p-2 rounded-3 cursor-pointer mt-3"
+            <a
+              class="text-white bg-success p-2 rounded-3 cursor-pointer mt-3"
+              [routerLink]="'/events/accept/' + event.id"
               >Accept</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div
+        *ngIf="!isStarted && isParticipated"
+        class="bg-mini-gradiant card w-100 shadow-lg rounded-xxl border-0 mb-3 mt-3 p-2"
+      >
+        <div class="card-body p-3 border-0">
+          <div
+            class="d-flex font-xsss fw-700 text-white flex-column align-items-center justify-content-center"
+          >
+            <span
+              >Your are attenting this event click below to get your pass</span
+            >
+            <a
+              class="text-black bg-greylight p-2 rounded-3 cursor-pointer mt-3"
+              [routerLink]="'/events/pass/' + event.id"
+              >Get Pass</a
             >
           </div>
         </div>

@@ -50,8 +50,8 @@ export class NavigationTopComponent implements OnInit {
   async markAsSeen(id: any) {
     try {
       await lastValueFrom(this.notificationService.markAsSeen(id));
+      if(!this.seen[id]) this.seen[id] = true;
       this.seen[id] = true;
-      this.unseen--;
     } catch (err) {
       console.log(err);
     }

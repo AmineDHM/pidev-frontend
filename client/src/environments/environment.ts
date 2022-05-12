@@ -13,6 +13,10 @@ export const environment = {
     RapidAPI_Host: 'microsoft-computer-vision3.p.rapidapi.com',
     RapidAPI_Key: '91dfb77e42mshdfeb181c79b1004p1f2307jsn09fd2337d643',
   },
+  stripe: {
+    publishable_key:
+      'pk_test_51Il3FoAujkDiX9jOCpl0mlUwzIdPD7zAqrYZIXPuIXIRPCIivz2k3vgrS3njBCnogpLdcuHFi6yLIYZTJ2TCzNcm00iHKRND3T',
+  },
 };
 
 /*

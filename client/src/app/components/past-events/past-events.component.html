@@ -27,18 +27,14 @@
 
 <div class="row" *ngIf="!isLoading">
   <div class="col-xl-12">
-    <div
-      class="card w-100 border-0 shadow-none rounded-xxl border-0 mb-3 overflow-hidden"
-    >
-      <app-map class="rounded-3 h400" [events]="events"></app-map>
-    </div>
-
     <!-- Search and filters -->
     <div class="row">
       <div class="col-xl-12">
         <div class="card shadow-xss w-100 d-block d-flex border-0 p-4 mb-3">
           <div class="card-body d-flex align-items-center p-0">
-            <h2 class="fw-700 mb-0 mt-0 font-md text-grey-900">Upcoming Events</h2>
+            <h2 class="fw-700 mb-0 mt-0 font-md text-grey-900">
+              Past Events
+            </h2>
             <div class="search-form-2 ms-auto">
               <i class="ti-search font-xss"></i>
               <input
@@ -65,7 +61,7 @@
         <div
           class="card p-3 bg-white w-100 hover-card border-0 shadow-xss rounded-xxl border-0 mb-3 overflow-hidden"
         >
-          <div class="card-image w-100">
+          <div class="card-ige w-100">
             <img
               [src]="
                 'https://firebasestorage.googleapis.com/v0/b/pidev-405b8.appspot.com/o/' +
@@ -142,7 +138,7 @@
 
             <!--<app-heart-icon [stroke]="'red'" [fill]=" item.id ? isFav[item.id] ? 'red' : 'none' : ''"></app-heart-icon> -->
             <a
-              routerLink="{{ item.id }}"
+              [routerLink]="'/events/' + item.id"
               class="font-xsssss fw-700 ps-3 pe-3 lh-32 float-right mt-4 text-uppercase rounded-3 ls-2 bg-success d-inline-block text-white me-1"
               >Learn More</a
             >

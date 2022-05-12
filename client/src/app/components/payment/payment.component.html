@@ -13,7 +13,7 @@
 
 <div class="card w-100 border-0 bg-white shadow-xs p-0 mb-4">
   <div class="card-body p-lg-5 p-4 w-100 border-0">
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-lg-5">
         <div class="col-lg-12 ps-0">
           <h4 class="mb-4 font-lg fw-700 mont-font mb-5">Saved Card</h4>
@@ -22,48 +22,8 @@
 
       <div class="col-lg-6 offset-lg-1">
         <div class="rounded-xxl bg-greylight h-100 p-3">
-          <div class="col-lg-12 ps-0">
-            <!-- <h4 class="mb-4 font-xs fw-700 mont-font mt-0">Add Card </h4> -->
-          </div>
+          <div class="col-lg-12 ps-0"></div>
           <div class="col-lg-12">
-            <!--  <div
-              class="item ms-auto me-auto mt-3 w-100 h150 bg-white rounded-xxl text-left shadow-lg ps-3 pt-2 align-items-end flex-column d-flex"
-            >
-              <div
-                class="card border-0 bg-transparent-card shadow-none p-0 text-left w-100"
-              >
-                <div class="row">
-                  <div class="col-6 ps-2">
-                    <img
-                      src="assets/images/b-17.png"
-                      alt="icon"
-                      class="w60 float-left d-inline-block"
-                    />
-                  </div>
-                  <div class="col-6 text-right pe-4">
-                    <img
-                      src="assets/images/chip.png"
-                      alt="icon"
-                      class="w30 float-right d-inline-block mt-2 me-2"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                class="card border-0 bg-transparent-card shadow-none p-0 text-left w-100 mt-auto"
-              >
-                <h4
-                  class="text-grey-900 font-sm fw-700 mont-font text-dark-color"
-                >
-                  **** **** **** 2234
-                  <span
-                    class="d-block fw-500 text-grey-500 font-xssss mt-0 mb-3 text-dark-color"
-                    >Credit Card</span
-                  >
-                </h4>
-              </div>
-            </div> -->
-
             <div class="card border-0 mb-4 shadow-none">
               <div class="card-body d-block text-left p-0">
                 <div
@@ -215,6 +175,40 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+
+    <form (ngSubmit)="createToken()" [formGroup]="stripeTest">
+      <div class="form-group">
+        <label class="mont-font fw-600 font-xsss">Email Adress</label>
+        <input
+          type="email"
+          class="form-control"
+          formControlName="email"
+          placeholder="Your Email Adress..."
+        />
+      </div>
+
+      <div class="form-group mt-2">
+        <label class="mont-font fw-600 font-xsss">Credit Card Informations</label>
+        <ngx-stripe-card
+        [options]="cardOptions"
+        [elementsOptions]="elementsOptions"
+        style="padding: 10px;"
+      ></ngx-stripe-card>
+      </div>
+
+
+      <re-captcha
+        formControlName="recaptcha"
+        siteKey="6LffIqYfAAAAAFOdhrnOaqF9wJW6b26BHLoYoktf"
+      ></re-captcha>
+      <button
+        type="submit"
+        class="bg-current text-center text-white font-xsss fw-600 p-3 w175 rounded-3 d-inline-block mt-2"
+        [disabled]="!stripeTest.valid"
+      >
+        Pay
+      </button>
+    </form>
   </div>
 </div>

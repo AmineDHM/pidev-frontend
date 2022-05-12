@@ -22,10 +22,7 @@ export class EventService {
   constructor(private http: HttpClient) {}
 
   getAllEvents(): Observable<EventType[]> {
-    return this.http.get<EventType[]>(
-      `${API_BASE_URL}/events`,
-      httpOptions
-    );
+    return this.http.get<EventType[]>(`${API_BASE_URL}/events`, httpOptions);
   }
 
   getEvent(id: number): Observable<EventType> {
@@ -79,17 +76,11 @@ export class EventService {
   }
 
   getInvitedEvents(id: number): Observable<any> {
-    return this.http.get(
-      `${API_BASE_URL}/get-invited-events`,
-      httpOptions
-    );
+    return this.http.get(`${API_BASE_URL}/get-invited-events`, httpOptions);
   }
 
   getAcceptedEvents(id: number): Observable<any> {
-    return this.http.get(
-      `${API_BASE_URL}/get-accepted-events`,
-      httpOptions
-    );
+    return this.http.get(`${API_BASE_URL}/get-accepted-events`, httpOptions);
   }
 
   feedbackEvent(id: number, feedback: FeedbackType): Observable<any> {
@@ -103,6 +94,40 @@ export class EventService {
   getUpcomingEvents(): Observable<EventType[]> {
     return this.http.get<EventType[]>(
       `${API_BASE_URL}/events/upcoming`,
+      httpOptions
+    );
+  }
+
+  getPastEvents(): Observable<EventType[]> {
+    return this.http.get<EventType[]>(
+      `${API_BASE_URL}/events/past`,
+      httpOptions
+    );
+  }
+
+  pay(eventId: number, body: any): Observable<any> {
+    return this.http.post(
+      `${API_BASE_URL}/charge?eventId=${eventId}`,
+      body,
+      httpOptions
+    );
+  }
+
+  getPass(eventId: number): Observable<any> {
+    return this.http.get(`${API_BASE_URL}/pass/get/${eventId}`, httpOptions);
+  }
+
+  redeemPass(passId: string): Observable<any> {
+    return this.http.put(
+      `${API_BASE_URL}/pass/redeem/${passId}`,
+      {},
+      httpOptions
+    );
+  }
+
+  search(req: string): Observable<EventType[]> {
+    return this.http.get<EventType[]>(
+      `${API_BASE_URL}/events/search?req=${req}`,
       httpOptions
     );
   }

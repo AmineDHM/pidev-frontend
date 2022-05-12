@@ -75,7 +75,12 @@ export class EventService {
   inviteUsers(eventId: number, users: number[]): Observable<any> {
     return this.http.post(
       `${API_BASE_URL}/events/invite?usersId=${users.toString()}&eventId=${eventId}`,
-      httpOptions
+      {},
+      {
+        headers: new HttpHeaders({
+          Authorization: JWT_TOKEN,
+        }),
+      }
     );
   }
 

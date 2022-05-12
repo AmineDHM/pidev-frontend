@@ -11,7 +11,10 @@ import { MainComponent } from './components/main/main.component';
 import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { PassComponent } from './components/pass/pass.component';
+import { PastEventsComponent } from './components/past-events/past-events.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { RedeemPassComponent } from './components/redeem-pass/redeem-pass.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
 
@@ -34,7 +37,12 @@ const routes: Routes = [
       {
         path: 'events',
         component: EventsComponent,
-        data: { title: 'Events' },
+        data: { title: 'Upcoming Events' },
+      },
+      {
+        path: 'events/past',
+        component: PastEventsComponent,
+        data: { title: 'Past Events' },
       },
       {
         path: 'events/:id',
@@ -47,9 +55,20 @@ const routes: Routes = [
         data: { title: 'Notifications' },
       },
       {
-        path: 'pay',
+        path: 'events/accept/:id',
         component: PaymentComponent,
         data: { title: 'Payment' },
+      },
+      {
+        path: 'events/pass/:id',
+        component: PassComponent,
+        data: { title: 'Your Pass' },
+      },
+      {
+        path: 'pass/redeem/:passId',
+        component: RedeemPassComponent,
+        data: { title: 'Redeem Your Pass' },
+
       },
     ],
   },

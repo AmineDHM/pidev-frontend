@@ -31,7 +31,11 @@ import { MomentModule } from 'ngx-moment';
 import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 import { WeatherWidgetComponent } from './components/weather-widget/weather-widget.component';
 import { PaymentComponent } from './components/payment/payment.component';
-
+import { NgxStripeModule } from 'ngx-stripe';
+import { PassComponent } from './components/pass/pass.component';
+import { RedeemPassComponent } from './components/redeem-pass/redeem-pass.component';
+import { PastEventsComponent } from './components/past-events/past-events.component';
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 
 @NgModule({
   declarations: [
@@ -53,7 +57,10 @@ import { PaymentComponent } from './components/payment/payment.component';
     SettingsComponent,
     NotificationsComponent,
     WeatherWidgetComponent,
-    PaymentComponent
+    PaymentComponent,
+    PassComponent,
+    RedeemPassComponent,
+    PastEventsComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +80,9 @@ import { PaymentComponent } from './components/payment/payment.component';
     LightboxModule,
     StarRatingModule.forRoot(),
     MomentModule,
+    NgxStripeModule.forRoot(environment.stripe.publishable_key),
+    RecaptchaModule,
+    RecaptchaFormsModule,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],

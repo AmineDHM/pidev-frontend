@@ -11,6 +11,8 @@ import { lastValueFrom } from 'rxjs';
 export class EventsComponent implements OnInit {
   events: EventType[] = [];
   isLoading = true;
+  search: string = '';
+
   constructor(private eventService: EventService) {}
 
   async ngOnInit() {
@@ -24,5 +26,10 @@ export class EventsComponent implements OnInit {
     } catch (err) {
       console.log(err);
     }
+  }
+
+  async fireSearch() {
+    this.events = await lastValueFrom(this.eventService.search(this.search));
+    this.events = this.events.filter((e) => new Date(e.startDate) >= new Date());
   }
 }

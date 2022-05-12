@@ -1,3 +1,4 @@
+import { messages } from './../../../../../admin/src/app/pages/extra-components/chat/messages';
 import { EventType } from './../../services/event-services/event-type';
 import { EventService } from './../../services/event-services/event.service';
 import { Component, OnInit } from '@angular/core';
@@ -7,6 +8,7 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ImageService } from 'src/app/services/image-services/image.service';
 import { lastValueFrom } from 'rxjs';
 import { HttpHeaderResponse } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-event-item',
@@ -38,22 +40,20 @@ export class EventItemComponent implements OnInit {
     private _lightboxConfig: LightboxConfig,
     private formBuilder: FormBuilder,
     private router: Router,
-    private imageService: ImageService
+    private imageService: ImageService,
+    private toastrService: ToastrService
   ) {
     _lightboxConfig.disableScrolling = true;
   }
 
   async ngOnInit() {
-    //fetch event
     await this.fetchEvent();
-    //fetch weather
     await this.fetchWeather();
-    //fetch info of user about the event
-    await this.fetchUserEventInfo();
-    //fetch event feedbacks
-    await this.fetchFeedbacks();
-    //fetch average rating
     await this.fetchAvgRating();
+    await this.fetchFeedbacks();
+    await this.fetchUserEventInfo();
+
+    console.log(this.feedbacks);
 
     this.isLoading = false;
   }
@@ -73,7 +73,7 @@ export class EventItemComponent implements OnInit {
 
   async fetchFeedbacks() {
     try {
-      return await lastValueFrom(
+      this.feedbacks = await lastValueFrom(
         this.eventService.getFeedbacksEvent(this.eventId)
       );
     } catch (err) {
@@ -83,9 +83,10 @@ export class EventItemComponent implements OnInit {
 
   async fetchAvgRating() {
     try {
-      return await lastValueFrom(
+      const res = await lastValueFrom(
         this.eventService.getAverageRatingEvent(this.eventId)
       );
+      this.avgRating = res.average;
     } catch (err) {
       console.log(err);
     }
@@ -106,10 +107,9 @@ export class EventItemComponent implements OnInit {
       const res = await lastValueFrom(
         this.eventService.getUserInfoAboutEvent(this.eventId)
       );
-      console.log(res);
       this.isFav = res.isFavorite;
       this.isInvited = res.isInvited;
-      this.isParticipated = res.isAccepted
+      this.isParticipated = res.isAccepted;
     } catch (err) {
       console.log(err);
     }
@@ -119,17 +119,21 @@ export class EventItemComponent implements OnInit {
     this.eventService
       .feedbackEvent(this.eventId, this.feedbackForm.value)
       .subscribe({
-        next: (res) => {
-          console.log(res);
+        next: async (res) => {
           if (res.status === true) {
-            this.fetchFeedbacks();
-            this.fetchAvgRating();
+            await this.fetchFeedbacks();
+            await this.fetchAvgRating();
+            this.toastrService.success(res.message, 'Success');
+          } else {
+            this.toastrService.error(res.message, 'Error');
           }
         },
-        error: (err) => console.log(err),
+        error: (err) => {
+          this.toastrService.error('Something went wrong', 'Error');
+          console.log(err);
+        },
         complete: () => {
-          this.feedbackForm.get('rate')?.setValue('');
-          this.feedbackForm.get('content')?.setValue('');
+          this.feedbackForm.reset();
         },
       });
   }
@@ -137,7 +141,6 @@ export class EventItemComponent implements OnInit {
   async getImageDescription(url: string) {
     try {
       const res = await lastValueFrom(this.imageService.describeImage(url));
-      console.log(res);
       return res?.description?.captions?.[0]?.text;
     } catch (err) {
       console.log(err);
