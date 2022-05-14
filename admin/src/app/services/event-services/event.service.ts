@@ -118,4 +118,11 @@ export class EventService {
       }
     );
   }
+
+  getStatistics(): Observable<any> {
+    return this.http.get(
+      `${API_BASE_URL}/events/statistics`,
+      httpOptions
+    );
+  }
 }

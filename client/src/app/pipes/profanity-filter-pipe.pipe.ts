@@ -5,11 +5,6 @@ import BadWordsFilter from 'bad-words';
   name: 'profanityFilter',
 })
 export class ProfanityFilterPipe implements PipeTransform {
-  list: string[] = ['Kill', '5h1t', '5hit', 'a55', 'xxx'];
-  placeHolder: string = '*';
-  regex: string = '/[^a-zA-Z0-9|$|@]|^/g';
-  replaceRegex: string = '/w/g';
-
   transform(value: string) {
     if (value === undefined || value === '') {
       return '';
@@ -19,10 +14,10 @@ export class ProfanityFilterPipe implements PipeTransform {
   }
 
   clean(string: string) {
-    console.log(string)
-    const filter = new BadWordsFilter()
+    console.log(string);
+    const filter = new BadWordsFilter();
     const result = filter.clean(string);
-    console.log(result)
+    console.log(result);
     return result;
   }
 }

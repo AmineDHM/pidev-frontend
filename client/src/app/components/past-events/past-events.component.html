@@ -48,10 +48,12 @@
               class="form-select float-right w175 ms-3"
               aria-label="Default select example"
               (change)="filtre($event)"
+              [(ngModel)]="filtreId"
             >
-              <option selected disabled>Choose Filtre</option>
+              <option selected disabled value="null">Choose Filtre</option>
               <option value="0">Invited Events</option>
-              <option value="1">Participated Event</option>
+              <option value="1">Participated Events</option>
+              <option value="2">Favorite Events</option>
             </select>
             <a
               class="btn-round-md ms-2 bg-greylight theme-dark-bg rounded-3 cursor-pointer"

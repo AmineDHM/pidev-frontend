@@ -12,6 +12,7 @@ export class PastEventsComponent implements OnInit {
   events: EventType[] = [];
   isLoading = true;
   search: string = '';
+  filtreId = null;
 
   constructor(private eventService: EventService) {}
 
@@ -41,15 +42,27 @@ export class PastEventsComponent implements OnInit {
     this.events = await lastValueFrom(this.eventService.getAcceptedEvents());
   }
 
+  async getFavoriteEvents() {
+    this.events = await lastValueFrom(this.eventService.getFavoriteEvents());
+  }
+
   async reset() {
     await this.getPastEvents();
+    this.filtreId = null;
   }
 
   async filtre(e: any) {
-    if (e.target.value) {
+    this.filtreId = e.target.value;
+    if (this.filtreId === 1) {
       await this.getInvitedEvents();
-    } else {
+    } else if (this.filtreId === 0) {
       await this.getAcceptedEvents();
+    } else {
+      await this.getFavoriteEvents();
     }
+
+    this.events = this.events.filter(
+      (e) => new Date(e.startDate) <= new Date()
+    );
   }
 }

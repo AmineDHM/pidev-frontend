@@ -37,8 +37,8 @@ export class NotificationsComponent implements OnInit {
   async markAsSeen(id: any) {
     try {
       await lastValueFrom(this.notificationService.markAsSeen(id));
-      if(!this.seen[id]) this.seen[id] = true;
-      this.unseen--;
+      if (!this.seen[id]) this.unseen--;
+      this.seen[id] = true;
     } catch (err) {
       console.log(err);
     }

@@ -61,9 +61,9 @@ export class EventService {
     );
   }
 
-  getFavoriteEvents(id: number): Observable<any> {
+  getFavoriteEvents(): Observable<any> {
     return this.http.get(
-      `${API_BASE_URL}/get-events-fav?eventId=${id}`,
+      `${API_BASE_URL}/get-events-fav`,
       httpOptions
     );
   }

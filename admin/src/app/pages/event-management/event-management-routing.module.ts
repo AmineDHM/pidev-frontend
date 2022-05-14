@@ -5,6 +5,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { ShowEventsComponent } from "./show-events/show-events.component";
 import { InviteUsersComponent } from "./invite-users/invite-users.component";
 import { EventItemComponent } from "./event-item/event-item.component";
+import { StatisticsComponent } from "./statistics/statistics.component";
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
       {
         path: "invite-users",
         component: InviteUsersComponent,
+      },
+      {
+        path: "statistics",
+        component: StatisticsComponent,
       },
     ],
   },

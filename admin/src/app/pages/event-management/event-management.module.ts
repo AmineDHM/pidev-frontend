@@ -40,6 +40,9 @@ import { environment } from "../../../environments/environment";
 import { InviteUsersComponent } from "./invite-users/invite-users.component";
 import { DragDropFileUploadDirective } from "../../directives/drag-drop-file-upload.directive";
 import { EventItemComponent } from './event-item/event-item.component';
+import { StatisticsComponent } from './statistics/statistics.component';
+import { NgxEchartsModule } from "ngx-echarts";
+import { PieChartComponent } from './pie-chart/pie-chart.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +54,8 @@ import { EventItemComponent } from './event-item/event-item.component';
     InviteUsersComponent,
     DragDropFileUploadDirective,
     EventItemComponent,
+    StatisticsComponent,
+    PieChartComponent,
   ],
   imports: [
     FormsModule,
@@ -86,6 +91,7 @@ import { EventItemComponent } from './event-item/event-item.component';
       accessToken: environment.mapbox.accessToken,
       geocoderAccessToken: environment.mapbox.accessToken,
     }),
+    NgxEchartsModule
   ],
 })
 export class EventManagementModule {}

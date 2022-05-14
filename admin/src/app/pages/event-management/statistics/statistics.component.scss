@@ -1,0 +1,37 @@
+.statistic-icon {
+  border-radius: 1rem;
+  width: 5.75rem;
+  height: 4.75rem;
+  font-size: 3.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-right: 50px;
+}
+
+.statistic-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.bg-primary-gradient {
+  background-image: linear-gradient(to right, #598bff, #3366ff);
+}
+
+.bg-warning-gradient {
+  background-image: linear-gradient(to right, #ffc94d, #ffaa00);
+}
+
+.bg-success-gradient {
+  background-image: linear-gradient(to right, #2ce69b, #00d68f);
+}
+
+.pie-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}

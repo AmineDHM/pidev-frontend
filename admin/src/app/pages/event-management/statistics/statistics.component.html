@@ -1,0 +1,42 @@
+<nb-card>
+  <nb-card-header>Events statistics?</nb-card-header>
+  <nb-card-body>
+    <div class="row">
+      <div class="col-6">
+        <div class="statistic-container">
+          <div class="statistic-icon bg-primary-gradient">
+            <nb-icon
+              icon="pin"
+              pack="eva"
+              class="icon"
+              style="font-size: 3.75rem; color: white"
+            ></nb-icon>
+          </div>
+          <h4>{{ statistics?.event }}  Events</h4>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="statistic-container">
+          <div class="bg-success-gradient statistic-icon">
+            <nb-icon
+              icon="credit-card"
+              pack="eva"
+              class="icon"
+              style="font-size: 3.75rem; color: white"
+            ></nb-icon>
+          </div>
+          <h4>{{ statistics?.profit }} TND Profits</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <ngx-pie-chart></ngx-pie-chart>
+      </div>
+
+      <div class="col-2"></div>
+    </div>
+  </nb-card-body>
+</nb-card>

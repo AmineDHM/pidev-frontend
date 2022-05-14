@@ -53,8 +53,6 @@ export class EventItemComponent implements OnInit {
     await this.fetchFeedbacks();
     await this.fetchUserEventInfo();
 
-    console.log(this.feedbacks);
-
     this.isLoading = false;
   }
 
@@ -107,6 +105,7 @@ export class EventItemComponent implements OnInit {
       const res = await lastValueFrom(
         this.eventService.getUserInfoAboutEvent(this.eventId)
       );
+      console.log(res);
       this.isFav = res.isFavorite;
       this.isInvited = res.isInvited;
       this.isParticipated = res.isAccepted;

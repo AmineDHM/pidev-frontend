@@ -17,6 +17,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'Invite Users',
         link: '/pages/event/invite-users'
+      },
+      {
+        title: "Statistics",
+        link: '/pages/event/statistics'
       }
     ]
   },
